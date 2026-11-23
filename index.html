@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>document.documentElement.classList.add("js");addEventListener("hashchange",function(){if(location.hash.indexOf("#intro")===0)location.reload()});try{if(location.hash.indexOf("#intro")===0||localStorage.getItem("jussi-intro")!=="done")document.documentElement.classList.add("intro-open")}catch(e){document.documentElement.classList.add("intro-open")}</script>
+<title>Marius Rüppel — Portfolio</title>
+<meta name="description" content="Portfolio von Marius Rüppel: Social Media, Content Creation, Community-Management und Kampagnen.">
+<style>
+  /* ============ FONTS: Redaction ============ */
+  @font-face{
+    font-family:"Redaction";
+    src:url('webfonts/Redaction-Regular.woff2') format('woff2');
+    font-weight:400; font-style:normal; font-display:swap;
+  }
+  @font-face{
+    font-family:"Redaction";
+    src:url('webfonts/Redaction-Bold.woff2') format('woff2');
+    font-weight:700; font-style:normal; font-display:swap;
+  }
+  @font-face{
+    font-family:"Redaction";
+    src:url('webfonts/Redaction-Italic.woff2') format('woff2');
+    font-weight:400; font-style:italic; font-display:swap;
+  }
+  /* ---- graded (rastered) cuts ---- */
+  @font-face{ /* strong raster, big display */
+    font-family:"Redaction Big";
+    src:url('webfonts/Redaction_20-Bold.woff2') format('woff2');
+    font-weight:700; font-style:normal; font-display:swap;
+  }
+  @font-face{ /* medium raster, headings */
+    font-family:"Redaction Mid";
+    src:url('webfonts/Redaction_35-Bold.woff2') format('woff2');
+    font-weight:700; font-style:normal; font-display:swap;
+  }
+  @font-face{ /* medium raster italic, accents */
+    font-family:"Redaction Ital";
+    src:url('webfonts/Redaction_35-Italic.woff2') format('woff2');
+    font-weight:400; font-style:italic; font-display:swap;
+  }
+
+  /* ============ TOKENS ============ */
+  :root{
+    --ink:#101010;
+    --paper:#f5f3ee;
+    --muted:#6f6c64;
+    --hair:#d9d6ce;
+    --pad:clamp(18px,4.5vw,56px);
+  }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html{ scroll-behavior:smooth; }
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"Redaction", Georgia, serif;
+    font-weight:400;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  a{ color:inherit; text-decoration:none; }
+  .label{
+    font-size:11px; letter-spacing:0.22em; text-transform:uppercase;
+    font-weight:700;
+  }
+
+  /* ============ HEADER ============ */
+  header{
+    position:sticky; top:0; z-index:60;
+    display:grid; grid-template-columns:1fr auto; align-items:center; gap:16px;
+    padding:16px var(--pad);
+    background:var(--paper);
+    border-bottom:1px solid var(--ink);
+  }
+  .brand{ font-family:"Redaction Big",serif; font-weight:700; font-size:21px; letter-spacing:0.02em; }
+  .brand-sub{
+    justify-self:center; text-align:center; line-height:1.25;
+    font-size:10.5px; letter-spacing:0.18em; text-transform:uppercase; color:var(--muted);
+  }
+  header nav{ justify-self:end; display:flex; align-items:center; gap:clamp(12px,2vw,26px); }
+  header nav a{ font-size:14px; letter-spacing:0.02em; padding-bottom:2px; border-bottom:1px solid transparent; transition:border-color .2s; }
+  header nav a:hover{ border-color:var(--ink); }
+  .lang{ font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:var(--muted); }
+  .lang b{ color:var(--ink); }
+
+  /* ============ HERO ============ */
+  .hero{ padding:clamp(48px,9vw,120px) var(--pad) clamp(36px,5vw,64px); }
+  .hero-actions{ display:flex; flex-wrap:wrap; align-items:center; gap:14px 24px; margin-top:8px; }
+  .textlink{ font-size:15px; border-bottom:1px solid var(--ink); padding:10px 0 2px; }
+  .textlink:hover{ font-style:italic; }
+  section[id], article[id]{ scroll-margin-top:88px; }
+  @media (min-width:1100px){
+    .hero{ display:grid; grid-template-columns:minmax(0,1fr) auto; column-gap:clamp(32px,4vw,72px); align-items:end; }
+    .hero h1{ grid-column:1; }
+    .hero-row{ grid-column:1; }
+    .hero .ascii-slot{ grid-column:2; grid-row:1 / span 2; align-self:center; margin-top:0; }
+  }
+  .hero h1{
+    font-family:"Redaction Big",serif;
+    font-weight:700;
+    font-size:clamp(40px,7.4vw,104px);
+    line-height:0.98;
+    letter-spacing:-0.015em;
+    max-width:17ch;
+  }
+  .hero h1 em{ font-family:"Redaction Ital",serif; font-style:italic; font-weight:400; }
+  .hero-row{
+    display:flex; flex-wrap:wrap; gap:clamp(20px,2.4vw,32px);
+    flex-direction:column; align-items:flex-start;
+    margin-top:clamp(28px,4vw,52px);
+  }
+  .hero-lead{ max-width:52ch; font-size:clamp(16px,1.5vw,20px); color:var(--ink); }
+  .cta{
+    display:inline-flex; align-items:center; gap:10px;
+    border:1px solid var(--ink); border-radius:999px;
+    padding:13px 26px; font-size:15px; white-space:nowrap;
+    transition:background .2s, color .2s;
+  }
+  .cta:hover{ background:var(--ink); color:var(--paper); }
+
+  /* animated ascii horse */
+  .ascii-slot{
+    margin-top:clamp(34px,5vw,64px);
+    display:flex; align-items:center; justify-content:center;
+    overflow:hidden;
+  }
+  .ascii-slot .ascii{
+    font-family:ui-monospace,"Cascadia Code","Courier New",monospace;
+    white-space:pre; line-height:1.0;
+    font-size:clamp(4px,1.5vw,11px);
+    color:var(--ink); margin:0;
+    height:24em; flex:none;
+  }
+
+  /* ============ SECTION SCAFFOLD ============ */
+  section{ padding:clamp(54px,8vw,108px) var(--pad); }
+  .sec-head{
+    display:flex; align-items:baseline; gap:14px; margin-bottom:clamp(26px,4vw,46px);
+    color:var(--muted);
+  }
+  .sec-head::after{ content:""; flex:1; height:1px; background:var(--ink); align-self:center; }
+
+
+  /* ============ QUOTE ============ */
+  .quote{ border-top:1px solid var(--hair); }
+  .quote blockquote{
+    font-style:italic; font-size:clamp(24px,4vw,52px); line-height:1.18; max-width:20ch; font-weight:400;
+  }
+  .quote .by{ margin-top:26px; }
+  .quote .by b{ display:block; letter-spacing:0.04em; }
+  .quote .by span{ color:var(--muted); font-size:14px; letter-spacing:0.14em; text-transform:uppercase; }
+
+  /* ============ SERVICES ============ */
+  .services{ border-top:1px solid var(--ink); }
+  .svc{
+    display:block;
+    padding:clamp(26px,3.5vw,40px) 0;
+    border-bottom:1px solid var(--hair);
+    align-items:start;
+  }
+  .svc:first-of-type{ border-top:1px solid var(--hair); }
+  .svc .num{ font-size:14px; color:var(--muted); padding-top:10px; letter-spacing:0.05em; }
+  .services{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); column-gap:clamp(24px,4vw,64px); }
+  .services .sec-head{ grid-column:1 / -1; }
+  .services .svc:nth-of-type(2), .services .svc:nth-of-type(3){ border-top:1px solid var(--hair); }
+  .svc h3{ font-family:"Redaction Mid",serif; font-weight:700; font-size:clamp(22px,2.2vw,30px); line-height:1.1; letter-spacing:-0.01em; }
+  .svc p{ color:var(--muted); font-size:clamp(15px,1.3vw,17px); max-width:54ch; margin-top:14px; }
+
+  /* ============ EDITORIAL ============ */
+  .editorial{ border-top:1px solid var(--hair); }
+  .ed-block{ max-width:64ch; margin:0 auto clamp(40px,6vw,80px); }
+  .ed-block h2{ font-family:"Redaction Mid",serif; font-weight:700; font-size:clamp(24px,3.4vw,40px); line-height:1.1; margin-bottom:18px; letter-spacing:-0.01em; }
+  .ed-block p{ color:var(--muted); font-size:clamp(16px,1.4vw,18px); line-height:1.65; }
+  .ed-image{
+    border:1px solid var(--ink); aspect-ratio:16/8; margin:clamp(40px,6vw,72px) 0;
+    display:flex; align-items:center; justify-content:center; color:var(--muted);
+    background:
+      repeating-linear-gradient(45deg, transparent 0 14px, rgba(16,16,16,0.03) 14px 28px);
+  }
+
+  /* ============ WORK GRID ============ */
+  .work{ border-top:1px solid var(--ink); }
+  .work-grid{
+    display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+    border-top:1px solid var(--hair);
+  }
+  .project{
+    padding:clamp(22px,2.6vw,34px) clamp(18px,2vw,28px) clamp(30px,4vw,46px);
+    border-bottom:1px solid var(--hair); border-right:1px solid var(--hair);
+    display:flex; flex-direction:column; min-height:230px;
+    transition:background .2s, color .2s;
+  }
+  .project:hover{ background:var(--ink); color:var(--paper); }
+  .project .code{ font-size:12px; letter-spacing:0.16em; text-transform:uppercase; opacity:0.6; }
+  .project .spacer{ flex:1; }
+  .project .client{ font-size:13px; letter-spacing:0.04em; opacity:0.7; }
+  .project .ptitle{ font-family:"Redaction Mid",serif; font-weight:700; font-size:clamp(20px,2vw,26px); line-height:1.08; margin-top:4px; }
+  .work-foot{ display:flex; justify-content:flex-end; padding:24px 0 0; }
+
+  /* ============ CASES ============ */
+  .cases{ border-top:1px solid var(--ink); }
+  .case{
+    display:grid; grid-template-columns:minmax(0,5fr) minmax(0,7fr); gap:clamp(20px,4vw,64px);
+    padding:clamp(30px,4vw,52px) 0; border-bottom:1px solid var(--hair);
+  }
+  .case:first-of-type{ border-top:1px solid var(--hair); }
+  .case .code{ font-size:12px; letter-spacing:0.16em; text-transform:uppercase; color:var(--muted); }
+  .case h3{ font-family:"Redaction Mid",serif; font-weight:700; font-size:clamp(28px,4vw,52px); line-height:1.02; letter-spacing:-0.01em; margin-top:10px; }
+  .case .role{ display:block; margin-top:12px; font-size:14px; color:var(--muted); max-width:34ch; }
+  .case .stat{ display:block; margin-top:clamp(20px,3vw,36px); font-family:"Redaction Big",serif; font-weight:700; font-size:clamp(34px,5vw,64px); line-height:1; }
+  .case .stat-label{ display:block; margin-top:6px; font-size:13px; letter-spacing:0.04em; color:var(--muted); }
+  .case-body p{ font-size:clamp(15px,1.3vw,17px); line-height:1.65; max-width:62ch; }
+  .case-body p + p{ margin-top:14px; }
+  .case-body .tags{ font-size:12px; letter-spacing:0.14em; text-transform:uppercase; color:var(--muted); margin-top:22px; }
+  .case-body .links a{ border-bottom:1px solid var(--ink); }
+  .case-body .links a:hover{ font-style:italic; }
+  .mentions-head{ margin-top:clamp(54px,8vw,96px); }
+  /* ============ CV ============ */
+  .cv{ border-top:1px solid var(--ink); }
+  .cv-list{ list-style:none; border-top:1px solid var(--hair); }
+  .cv-list li{
+    display:grid; grid-template-columns:190px 1fr; gap:clamp(12px,3vw,48px);
+    padding:clamp(16px,2vw,24px) 0; border-bottom:1px solid var(--hair); align-items:baseline;
+  }
+  .cv-list .when{ font-size:13px; letter-spacing:0.06em; color:var(--muted); font-variant-numeric:tabular-nums; }
+  .cv-list .what{ font-size:clamp(16px,1.4vw,19px); }
+  .cv-list .what b{ font-family:"Redaction Mid",serif; font-weight:700; margin-right:8px; }
+  .cv-list small{ display:block; font-size:14px; color:var(--muted); margin-top:4px; }
+  .skills{ display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:clamp(20px,3vw,40px); margin-top:clamp(36px,5vw,60px); }
+  .skills .label{ display:block; color:var(--muted); margin-bottom:10px; }
+  .skills p{ font-size:16px; line-height:1.6; }
+  .bigcta .mail{ font-size:15px; letter-spacing:0.04em; }
+  .bigcta .mail a{ border-bottom:1px solid var(--ink); }
+  /* ============ FAQ ============ */
+  .faq details{ border-bottom:1px solid var(--hair); }
+  .faq details:first-of-type{ border-top:1px solid var(--hair); }
+  .faq summary{
+    font-family:"Redaction Mid",serif;
+    list-style:none; cursor:pointer; padding:clamp(20px,2.6vw,30px) 0;
+    display:flex; align-items:center; justify-content:space-between; gap:20px;
+    font-weight:700; font-size:clamp(18px,2.1vw,26px); line-height:1.15;
+  }
+  .faq summary::-webkit-details-marker{ display:none; }
+  .faq summary .plus{ font-weight:400; font-size:1.4em; transition:transform .25s; }
+  .faq details[open] summary .plus{ transform:rotate(45deg); }
+  .faq .answer{ color:var(--muted); font-size:clamp(15px,1.3vw,17px); line-height:1.65; max-width:70ch; padding:0 0 clamp(22px,3vw,30px); }
+
+  /* ============ BIG CTA ============ */
+  .bigcta{ border-top:1px solid var(--ink); text-align:center; }
+  .bigcta .label{ display:block; color:var(--muted); }
+  .bigcta a.h{
+    display:inline-block; margin:18px 0 30px;
+    font-family:"Redaction Big",serif; font-weight:700; font-size:clamp(46px,12vw,160px); line-height:0.92; letter-spacing:-0.02em;
+  }
+  .bigcta a.h:hover{ font-style:italic; }
+
+  /* ============ FOOTER ============ */
+  footer{ background:var(--ink); color:var(--paper); padding:clamp(40px,6vw,72px) var(--pad) 28px; }
+  .foot-top{ display:flex; flex-wrap:wrap; justify-content:space-between; gap:28px; align-items:flex-start; }
+  .foot-brand{ font-family:"Redaction Big",serif; font-weight:700; font-size:clamp(30px,5vw,64px); letter-spacing:0.02em; }
+  .foot-links{ display:flex; gap:30px; flex-wrap:wrap; }
+  .foot-col span.label{ display:block; color:#8c887e; margin-bottom:12px; }
+  .foot-col a{ display:block; padding:3px 0; opacity:0.85; }
+  .foot-col a:hover{ opacity:1; text-decoration:underline; }
+  .clock{ font-variant-numeric:tabular-nums; letter-spacing:0.1em; }
+  .foot-bottom{
+    margin-top:clamp(36px,6vw,64px); padding-top:20px; border-top:1px solid #2b2b2b;
+    display:flex; flex-wrap:wrap; gap:14px 28px; justify-content:space-between;
+    font-size:12px; letter-spacing:0.06em; color:#8c887e;
+  }
+  .foot-bottom a:hover{ color:#fff; }
+
+  /* ============ INTRO ============ */
+  #intro{ display:none; }
+  .intro-open body{ overflow:hidden; }
+  .intro-open #intro{
+    display:flex; position:fixed; inset:0; z-index:200;
+    align-items:flex-start; justify-content:center; text-align:center;
+    background:var(--paper); padding:var(--pad); overflow-y:auto;
+    transition:opacity .5s ease;
+  }
+  #intro:focus{ outline:none; }
+  .intro-btn.is-dodging{ position:fixed; z-index:5; margin:0; transition:left .28s cubic-bezier(.2,.8,.2,1), top .28s cubic-bezier(.2,.8,.2,1); }
+  .intro-btn-slot{ display:inline-block; visibility:hidden; }
+  #intro.leaving{ opacity:0; }
+  .intro-step{ display:flex; flex-direction:column; align-items:center; gap:clamp(28px,4vw,48px); width:100%; margin:auto 0; }
+  .intro-step[hidden]{ display:none; }
+  .intro-q{
+    font-family:"Redaction Big",serif; font-weight:700;
+    font-size:clamp(34px,6vw,84px); line-height:1.02; letter-spacing:-0.015em;
+    max-width:16ch; text-wrap:balance; outline:none;
+  }
+  [data-step="coin"] .intro-q, [data-step="tarot"] .intro-q{ font-size:clamp(30px,4.6vw,64px); }
+  [data-step="tarot"]{ gap:clamp(18px,2.6vw,32px); }
+  .intro-actions{ display:flex; flex-wrap:wrap; justify-content:center; align-items:center; gap:14px 20px; }
+  .intro-actions[hidden]{ display:none; }
+  .intro-btn{ font:inherit; font-size:17px; background:none; color:var(--ink); cursor:pointer; min-width:120px; justify-content:center; }
+  .intro-again{ font:inherit; font-size:15px; background:none; border:0; border-bottom:1px solid var(--ink); color:var(--ink); cursor:pointer; }
+
+  /* Münze: startet auf „Nein“, dreht 4,5-mal, landet immer auf „Ja“ */
+  .coin-stage{ position:relative; width:180px; height:clamp(240px,34vh,320px); display:flex; align-items:flex-end; justify-content:center; perspective:900px; }
+  .coin-toss{ position:relative; z-index:1; margin-bottom:22px; }
+  .coin{
+    --size:clamp(120px,16vw,160px);
+    width:var(--size); height:var(--size); position:relative;
+    transform-style:preserve-3d; transform:rotateX(180deg);
+  }
+  .coin-face{
+    position:absolute; inset:0; border-radius:50%;
+    display:grid; place-items:center;
+    background:var(--paper); color:var(--ink);
+    border:2px solid var(--ink); box-shadow:inset 0 0 0 7px var(--paper), inset 0 0 0 8px var(--ink);
+    font-family:"Redaction Big",serif; font-weight:700; font-size:calc(var(--size) * .3);
+    backface-visibility:hidden; -webkit-backface-visibility:hidden;
+  }
+  .coin-back{ transform:rotateX(180deg); background:var(--ink); color:var(--paper); box-shadow:inset 0 0 0 7px var(--ink), inset 0 0 0 8px var(--paper); }
+  .coin-shadow{
+    position:absolute; bottom:6px; left:50%; width:120px; height:14px; margin-left:-60px;
+    border-radius:50%; background:var(--ink); opacity:.14;
+  }
+  .is-tossing .coin-toss{ animation:coin-arc 1.7s forwards; }
+  .is-tossing .coin{ animation:coin-spin 1.7s cubic-bezier(.25,.1,.25,1) forwards; }
+  .is-tossing .coin-shadow{ animation:coin-shadow 1.7s forwards; }
+  .is-landed .coin{ transform:rotateX(0deg); }
+  @keyframes coin-arc{
+    0%{ transform:translateY(0); animation-timing-function:cubic-bezier(.15,.55,.35,1); }
+    48%{ transform:translateY(calc(-1 * clamp(130px,22vh,210px))); animation-timing-function:cubic-bezier(.6,0,.85,.45); }
+    90%{ transform:translateY(0); animation-timing-function:ease-out; }
+    95%{ transform:translateY(-10px); animation-timing-function:ease-in; }
+    100%{ transform:translateY(0); }
+  }
+  @keyframes coin-spin{ from{ transform:rotateX(180deg); } to{ transform:rotateX(1800deg); } }
+  @keyframes coin-shadow{
+    0%,100%{ transform:scaleX(1); opacity:.14; }
+    48%{ transform:scaleX(.45); opacity:.05; }
+    90%{ transform:scaleX(1); opacity:.14; }
+  }
+  .coin-result{ min-height:1.4em; font-size:17px; }
+
+  /* Tarot: drei verdeckte Karten, jede ist „Der engagierte Arbeitnehmer“ */
+  .tarot-hint{ font-size:17px; margin-top:calc(-1 * clamp(6px,1vw,14px)); }
+  .tarot-spread{ display:flex; justify-content:center; align-items:flex-end; gap:clamp(10px,2vw,22px); perspective:1200px; min-height:var(--card-h); --card-w:clamp(100px,13vw,160px); --card-h:calc(var(--card-w) * 1.7); }
+  .is-drawn .tarot-spread{ --card-w:clamp(160px,min(15vw,24vh),210px); }
+  .tarot-card{
+    width:var(--card-w); height:var(--card-h); padding:0; border:0; background:none; cursor:pointer;
+    transition:transform .35s cubic-bezier(.2,.8,.2,1), opacity .3s ease, width .6s cubic-bezier(.2,.8,.2,1), height .6s cubic-bezier(.2,.8,.2,1);
+  }
+  .tarot-card:nth-child(1){ transform:rotate(-6deg) translateY(6px); }
+  .tarot-card:nth-child(3){ transform:rotate(6deg) translateY(6px); }
+  .tarot-card:hover{ transform:translateY(-10px); }
+  .tarot-card.is-gone{ opacity:0; transform:scale(.92); pointer-events:none; }
+  .tarot-card.is-chosen{ cursor:default; transform:none; }
+  .tarot-inner{
+    position:relative; display:block; width:100%; height:100%;
+    transform-style:preserve-3d; transition:transform .9s cubic-bezier(.3,.1,.2,1);
+  }
+  .tarot-card.is-flipped .tarot-inner{ transform:rotateY(180deg); }
+  .tarot-face{
+    position:absolute; inset:0; border:2px solid var(--ink); border-radius:10px;
+    backface-visibility:hidden; -webkit-backface-visibility:hidden;
+  }
+  .tarot-back{
+    background-color:var(--ink);
+    background-image:
+      repeating-linear-gradient(45deg, transparent 0 9px, rgba(245,243,238,.28) 9px 10px),
+      repeating-linear-gradient(-45deg, transparent 0 9px, rgba(245,243,238,.28) 9px 10px);
+    box-shadow:inset 0 0 0 6px var(--ink), inset 0 0 0 7px var(--paper);
+  }
+  .tarot-front{
+    transform:rotateY(180deg); background:var(--paper); color:var(--ink);
+    display:flex; flex-direction:column; align-items:center; justify-content:space-between;
+    padding:calc(var(--card-w) * .09) calc(var(--card-w) * .07) calc(var(--card-w) * .07); gap:6px;
+    box-shadow:inset 0 0 0 5px var(--paper), inset 0 0 0 6px var(--ink);
+  }
+  .tarot-num{ font-size:calc(var(--card-w) * .07); letter-spacing:.24em; }
+  .tarot-art{ display:block; width:100%; height:auto; color:var(--ink); }
+  .tarot-name{ font-family:"Redaction Mid",serif; font-weight:700; font-size:calc(var(--card-w) * .095); line-height:1.15; padding:0 4px 4px; }
+  .tarot-reading{ min-height:1px; }
+  .tarot-table{ display:flex; flex-direction:column; align-items:center; gap:clamp(18px,2.6vw,32px); }
+  @media (min-width:1000px){
+    .is-drawn .tarot-table{ flex-direction:row; align-items:center; gap:clamp(40px,5vw,72px); text-align:left; }
+    .is-drawn .tarot-reading{ width:min(44ch,40vw); }
+    .is-drawn .tarot-text{ margin:0; }
+    .is-drawn .tarot-actions{ justify-content:flex-start; }
+  }
+  .tarot-text{ max-width:44ch; margin:0 auto; font-size:clamp(16px,1.5vw,19px); line-height:1.6; font-style:italic; }
+  .tarot-text:empty{ display:none; }
+  .tarot-text:not(:empty){ animation:tarot-in .6s ease both; }
+  @keyframes tarot-in{ from{ opacity:0; transform:translateY(6px); } to{ opacity:1; transform:none; } }
+  .tarot-actions{ margin-top:clamp(22px,3vw,32px); }
+
+  /* ============ ZUGÄNGLICHKEIT ============ */
+  h1, h2, h3, p, .client, .ptitle, .role{ overflow-wrap:break-word; }
+  h2.label, h3.label{ font-family:inherit; line-height:1.4; }
+  .skip{
+    position:absolute; left:var(--pad); top:-100px; z-index:100;
+    background:var(--ink); color:var(--paper); padding:12px 18px; font-size:15px;
+  }
+  .skip:focus{ top:12px; }
+  main:focus{ outline:none; }
+  a:focus-visible, button:focus-visible, summary:focus-visible{
+    outline:2px solid var(--ink); outline-offset:4px;
+  }
+  footer a:focus-visible, .skip:focus-visible{ outline-color:var(--paper); }
+  ::selection{ background:var(--ink); color:var(--paper); }
+  .ascii-slot{ flex-direction:column; gap:10px; }
+  .case-body .links a{ display:inline-block; padding:4px 2px; min-height:24px; }
+  .ascii-slot.is-empty{ display:none; }
+  /* ============ MOTION ============ */
+  .js .reveal{ opacity:0; transform:translateY(16px); transition:opacity .7s ease, transform .7s ease; }
+  .js .reveal.in{ opacity:1; transform:none; }
+
+  @media (max-width:720px){
+    header{ grid-template-columns:1fr auto; }
+    .brand-sub{ display:none; }
+    header nav a:not([href="#contact"]){ display:none; }
+    .services{ grid-template-columns:1fr; }
+    .services .svc:nth-of-type(3){ border-top:none; }
+    .svc .num{ padding-top:0; }
+    .project{ border-right:none; min-height:0; }
+    .project .spacer{ flex:0 0 28px; }
+    .case{ grid-template-columns:1fr; }
+    .cv-list li{ grid-template-columns:1fr; gap:4px; }
+  }
+  @media (prefers-reduced-motion:reduce){
+    .js .reveal{ opacity:1; transform:none; transition:none; }
+    html{ scroll-behavior:auto; }
+    .intro-btn.is-dodging{ transition:none; }
+    .tarot-card, .tarot-inner{ transition:none; }
+    .tarot-text:not(:empty){ animation:none; }
+  }
+</style>
+</head>
+<body id="top">
+<!-- ===== INTRO (nur beim ersten Besuch; erneut ansehen: index.html#intro, gezielt: #intro-muenze / #intro-tarot) ===== -->
+<div id="intro" role="dialog" aria-modal="true" aria-labelledby="intro-q1" tabindex="-1">
+  <div class="intro-step" data-step="ask">
+    <h1 class="intro-q" id="intro-q1">Möchtest du ein professionelles Portfolio sehen oder nicht?</h1>
+    <div class="intro-actions">
+      <button class="cta intro-btn" type="button" data-intro="yes">Ja</button>
+      <button class="cta intro-btn" type="button" data-intro="no">Nein</button>
+    </div>
+  </div>
+  <div class="intro-step" data-step="coin" hidden>
+    <h1 class="intro-q" id="intro-q2" tabindex="-1">Soll ich Marius den Job geben?</h1>
+    <div class="coin-stage" aria-hidden="true">
+      <div class="coin-toss">
+        <div class="coin">
+          <span class="coin-face coin-front">Ja</span>
+          <span class="coin-face coin-back">Nein</span>
+        </div>
+      </div>
+      <div class="coin-shadow"></div>
+    </div>
+    <p class="coin-result" aria-live="polite"></p>
+    <div class="intro-actions coin-actions" hidden>
+      <button class="cta intro-btn" type="button" data-intro="enter">Weiter zum Portfolio →</button>
+      <button class="textlink intro-again" type="button" data-intro="again">Nochmal werfen</button>
+    </div>
+  </div>
+  <div class="intro-step" data-step="tarot" hidden>
+    <h1 class="intro-q" id="intro-q3" tabindex="-1">Soll ich Marius den Job geben?</h1>
+    <p class="tarot-hint">Zieh eine Karte.</p>
+    <div class="tarot-table">
+    <div class="tarot-spread">
+        <button class="tarot-card" type="button" data-card="1" aria-label="Karte 1 ziehen"><span class="tarot-inner"><span class="tarot-face tarot-back"></span><span class="tarot-face tarot-front"><span class="tarot-num">XXII</span><svg class="tarot-art" viewBox="0 0 96 108" shape-rendering="crispEdges" aria-hidden="true" focusable="false"><path fill="currentColor" d="M78 8h2v1h-2zM77 9h4v1h-4zM17 10h2v1h-2zM77 10h4v1h-4zM15 11h3v1h-3zM78 11h2v1h-2zM14 12h3v1h-3zM45 12h2v1h-2zM13 13h4v1h-4zM45 13h2v1h-2zM13 14h3v1h-3zM12 15h4v1h-4zM12 16h4v1h-4zM12 17h4v1h-4zM12 18h5v1h-5zM12 19h5v1h-5zM12 20h6v1h-6zM13 21h6v1h-6zM13 22h8v1h-8zM25 22h1v1h-1zM14 23h11v1h-11zM15 24h9v1h-9zM86 24h1v1h-1zM17 25h5v1h-5zM86 25h1v1h-1zM33 30h2v1h-2zM33 31h2v1h-2zM66 33h6v1h-6zM63 34h4v1h-4zM68 34h1v1h-1zM70 34h5v1h-5zM61 35h3v1h-3zM65 35h1v1h-1zM67 35h1v1h-1zM69 35h1v1h-1zM71 35h1v1h-1zM73 35h1v1h-1zM75 35h2v1h-2zM6 36h2v1h-2zM59 36h2v1h-2zM62 36h1v1h-1zM64 36h1v1h-1zM66 36h1v1h-1zM68 36h1v1h-1zM70 36h1v1h-1zM72 36h1v1h-1zM74 36h1v1h-1zM76 36h3v1h-3zM6 37h2v1h-2zM58 37h2v1h-2zM61 37h1v1h-1zM63 37h1v1h-1zM65 37h1v1h-1zM67 37h1v1h-1zM69 37h1v1h-1zM71 37h1v1h-1zM73 37h1v1h-1zM75 37h1v1h-1zM77 37h3v1h-3zM57 38h2v1h-2zM60 38h1v1h-1zM62 38h1v1h-1zM64 38h1v1h-1zM66 38h1v1h-1zM68 38h1v1h-1zM70 38h1v1h-1zM72 38h1v1h-1zM74 38h1v1h-1zM76 38h1v1h-1zM78 38h3v1h-3zM56 39h2v1h-2zM59 39h1v1h-1zM61 39h1v1h-1zM63 39h1v1h-1zM65 39h1v1h-1zM67 39h1v1h-1zM69 39h1v1h-1zM71 39h1v1h-1zM77 39h1v1h-1zM79 39h3v1h-3zM55 40h2v1h-2zM58 40h1v1h-1zM60 40h1v1h-1zM62 40h1v1h-1zM64 40h1v1h-1zM66 40h1v1h-1zM68 40h1v1h-1zM70 40h1v1h-1zM78 40h1v1h-1zM80 40h3v1h-3zM39 41h2v1h-2zM55 41h1v1h-1zM57 41h1v1h-1zM59 41h1v1h-1zM61 41h1v1h-1zM63 41h1v1h-1zM65 41h1v1h-1zM67 41h1v1h-1zM69 41h1v1h-1zM79 41h1v1h-1zM81 41h2v1h-2zM41 42h1v1h-1zM54 42h1v1h-1zM56 42h1v1h-1zM58 42h1v1h-1zM60 42h1v1h-1zM62 42h1v1h-1zM64 42h1v1h-1zM66 42h1v1h-1zM68 42h1v1h-1zM80 42h1v1h-1zM82 42h2v1h-2zM41 43h1v1h-1zM44 43h5v1h-5zM54 43h2v1h-2zM57 43h1v1h-1zM59 43h1v1h-1zM61 43h1v1h-1zM63 43h1v1h-1zM65 43h1v1h-1zM67 43h1v1h-1zM79 43h1v1h-1zM81 43h1v1h-1zM83 43h1v1h-1zM38 44h1v1h-1zM43 44h7v1h-7zM53 44h2v1h-2zM56 44h1v1h-1zM58 44h1v1h-1zM60 44h1v1h-1zM62 44h1v1h-1zM64 44h1v1h-1zM66 44h1v1h-1zM68 44h1v1h-1zM80 44h1v1h-1zM82 44h3v1h-3zM43 45h8v1h-8zM53 45h1v1h-1zM55 45h1v1h-1zM57 45h1v1h-1zM59 45h1v1h-1zM61 45h1v1h-1zM63 45h1v1h-1zM65 45h1v1h-1zM67 45h1v1h-1zM69 45h1v1h-1zM79 45h1v1h-1zM81 45h1v1h-1zM83 45h2v1h-2zM43 46h8v1h-8zM53 46h2v1h-2zM56 46h1v1h-1zM58 46h1v1h-1zM60 46h1v1h-1zM62 46h1v1h-1zM64 46h1v1h-1zM66 46h1v1h-1zM68 46h1v1h-1zM78 46h1v1h-1zM80 46h1v1h-1zM82 46h1v1h-1zM84 46h1v1h-1zM43 47h8v1h-8zM53 47h1v1h-1zM55 47h1v1h-1zM57 47h1v1h-1zM59 47h1v1h-1zM61 47h1v1h-1zM63 47h1v1h-1zM65 47h1v1h-1zM67 47h1v1h-1zM69 47h1v1h-1zM77 47h1v1h-1zM79 47h1v1h-1zM81 47h1v1h-1zM83 47h2v1h-2zM43 48h5v1h-5zM50 48h1v1h-1zM53 48h2v1h-2zM56 48h1v1h-1zM58 48h1v1h-1zM60 48h1v1h-1zM62 48h1v1h-1zM64 48h1v1h-1zM66 48h1v1h-1zM68 48h1v1h-1zM70 48h1v1h-1zM72 48h1v1h-1zM76 48h1v1h-1zM78 48h1v1h-1zM80 48h1v1h-1zM82 48h1v1h-1zM84 48h1v1h-1zM44 49h6v1h-6zM53 49h1v1h-1zM55 49h1v1h-1zM57 49h1v1h-1zM59 49h1v1h-1zM61 49h1v1h-1zM63 49h1v1h-1zM65 49h1v1h-1zM67 49h1v1h-1zM69 49h1v1h-1zM71 49h1v1h-1zM73 49h1v1h-1zM75 49h1v1h-1zM77 49h1v1h-1zM79 49h1v1h-1zM81 49h1v1h-1zM83 49h2v1h-2zM41 50h8v1h-8zM54 50h1v1h-1zM56 50h1v1h-1zM58 50h1v1h-1zM60 50h1v1h-1zM62 50h1v1h-1zM64 50h1v1h-1zM66 50h1v1h-1zM68 50h1v1h-1zM70 50h1v1h-1zM72 50h1v1h-1zM74 50h1v1h-1zM76 50h1v1h-1zM78 50h1v1h-1zM80 50h1v1h-1zM82 50h1v1h-1zM84 50h1v1h-1zM40 51h5v1h-5zM55 51h1v1h-1zM57 51h1v1h-1zM59 51h1v1h-1zM61 51h1v1h-1zM63 51h1v1h-1zM65 51h1v1h-1zM67 51h1v1h-1zM69 51h1v1h-1zM71 51h1v1h-1zM73 51h1v1h-1zM75 51h1v1h-1zM77 51h1v1h-1zM79 51h1v1h-1zM81 51h1v1h-1zM83 51h2v1h-2zM39 52h3v1h-3zM51 52h4v1h-4zM56 52h1v1h-1zM58 52h1v1h-1zM60 52h1v1h-1zM62 52h1v1h-1zM64 52h1v1h-1zM66 52h1v1h-1zM68 52h1v1h-1zM70 52h1v1h-1zM72 52h1v1h-1zM74 52h1v1h-1zM76 52h1v1h-1zM78 52h1v1h-1zM80 52h1v1h-1zM82 52h1v1h-1zM84 52h1v1h-1zM38 53h3v1h-3zM42 53h3v1h-3zM50 53h5v1h-5zM57 53h1v1h-1zM59 53h1v1h-1zM61 53h1v1h-1zM63 53h1v1h-1zM65 53h1v1h-1zM67 53h1v1h-1zM69 53h1v1h-1zM71 53h1v1h-1zM73 53h1v1h-1zM75 53h1v1h-1zM77 53h1v1h-1zM79 53h1v1h-1zM81 53h1v1h-1zM83 53h2v1h-2zM37 54h4v1h-4zM42 54h6v1h-6zM49 54h5v1h-5zM56 54h1v1h-1zM58 54h1v1h-1zM60 54h1v1h-1zM62 54h1v1h-1zM64 54h1v1h-1zM66 54h1v1h-1zM68 54h1v1h-1zM70 54h1v1h-1zM72 54h1v1h-1zM74 54h1v1h-1zM76 54h1v1h-1zM78 54h1v1h-1zM80 54h1v1h-1zM82 54h1v1h-1zM84 54h1v1h-1zM37 55h4v1h-4zM42 55h11v1h-11zM55 55h1v1h-1zM57 55h1v1h-1zM59 55h1v1h-1zM61 55h1v1h-1zM63 55h1v1h-1zM65 55h1v1h-1zM67 55h1v1h-1zM69 55h1v1h-1zM71 55h1v1h-1zM73 55h1v1h-1zM75 55h1v1h-1zM77 55h1v1h-1zM79 55h1v1h-1zM81 55h1v1h-1zM83 55h1v1h-1zM36 56h5v1h-5zM44 56h8v1h-8zM54 56h1v1h-1zM56 56h1v1h-1zM58 56h1v1h-1zM60 56h1v1h-1zM62 56h1v1h-1zM64 56h1v1h-1zM66 56h1v1h-1zM68 56h1v1h-1zM70 56h1v1h-1zM72 56h1v1h-1zM74 56h1v1h-1zM76 56h1v1h-1zM78 56h1v1h-1zM80 56h1v1h-1zM82 56h2v1h-2zM94 56h2v1h-2zM35 57h8v1h-8zM46 57h5v1h-5zM53 57h3v1h-3zM57 57h1v1h-1zM59 57h1v1h-1zM61 57h1v1h-1zM63 57h1v1h-1zM65 57h1v1h-1zM67 57h1v1h-1zM69 57h1v1h-1zM71 57h1v1h-1zM73 57h1v1h-1zM75 57h1v1h-1zM77 57h1v1h-1zM79 57h1v1h-1zM81 57h3v1h-3zM92 57h4v1h-4zM34 58h8v1h-8zM44 58h1v1h-1zM48 58h2v1h-2zM52 58h5v1h-5zM58 58h1v1h-1zM60 58h1v1h-1zM62 58h1v1h-1zM64 58h1v1h-1zM66 58h1v1h-1zM68 58h1v1h-1zM70 58h1v1h-1zM72 58h1v1h-1zM74 58h1v1h-1zM76 58h1v1h-1zM78 58h1v1h-1zM80 58h1v1h-1zM82 58h1v1h-1zM90 58h5v1h-5zM34 59h8v1h-8zM44 59h4v1h-4zM51 59h4v1h-4zM56 59h2v1h-2zM59 59h1v1h-1zM61 59h1v1h-1zM63 59h1v1h-1zM65 59h1v1h-1zM67 59h1v1h-1zM69 59h1v1h-1zM71 59h1v1h-1zM73 59h1v1h-1zM75 59h1v1h-1zM77 59h1v1h-1zM79 59h1v1h-1zM81 59h1v1h-1zM88 59h3v1h-3zM33 60h21v1h-21zM56 60h3v1h-3zM60 60h1v1h-1zM62 60h1v1h-1zM64 60h1v1h-1zM66 60h1v1h-1zM68 60h1v1h-1zM70 60h1v1h-1zM72 60h1v1h-1zM74 60h1v1h-1zM76 60h1v1h-1zM78 60h1v1h-1zM80 60h2v1h-2zM86 60h3v1h-3zM92 60h1v1h-1zM32 61h11v1h-11zM44 61h2v1h-2zM47 61h4v1h-4zM57 61h3v1h-3zM61 61h1v1h-1zM63 61h1v1h-1zM65 61h1v1h-1zM67 61h1v1h-1zM69 61h1v1h-1zM71 61h1v1h-1zM73 61h1v1h-1zM75 61h1v1h-1zM77 61h1v1h-1zM79 61h2v1h-2zM83 61h4v1h-4zM32 62h10v1h-10zM44 62h2v1h-2zM58 62h3v1h-3zM62 62h1v1h-1zM64 62h1v1h-1zM66 62h1v1h-1zM68 62h1v1h-1zM70 62h1v1h-1zM72 62h1v1h-1zM74 62h1v1h-1zM76 62h1v1h-1zM78 62h2v1h-2zM81 62h4v1h-4zM86 62h1v1h-1zM90 62h1v1h-1zM94 62h1v1h-1zM31 63h11v1h-11zM44 63h2v1h-2zM60 63h2v1h-2zM63 63h1v1h-1zM65 63h1v1h-1zM67 63h1v1h-1zM69 63h1v1h-1zM71 63h1v1h-1zM73 63h1v1h-1zM75 63h3v1h-3zM79 63h4v1h-4zM30 64h11v1h-11zM45 64h1v1h-1zM62 64h3v1h-3zM66 64h1v1h-1zM68 64h1v1h-1zM70 64h1v1h-1zM72 64h1v1h-1zM74 64h2v1h-2zM77 64h4v1h-4zM84 64h1v1h-1zM88 64h1v1h-1zM92 64h1v1h-1zM29 65h11v1h-11zM64 65h14v1h-14zM95 65h1v1h-1zM28 66h4v1h-4zM72 66h4v1h-4zM78 66h1v1h-1zM82 66h1v1h-1zM86 66h1v1h-1zM90 66h1v1h-1zM94 66h1v1h-1zM28 67h4v1h-4zM33 67h5v1h-5zM70 67h4v1h-4zM93 67h1v1h-1zM27 68h4v1h-4zM32 68h10v1h-10zM68 68h3v1h-3zM72 68h1v1h-1zM76 68h1v1h-1zM80 68h1v1h-1zM84 68h1v1h-1zM88 68h1v1h-1zM92 68h1v1h-1zM26 69h5v1h-5zM32 69h12v1h-12zM66 69h3v1h-3zM87 69h1v1h-1zM91 69h1v1h-1zM95 69h1v1h-1zM26 70h5v1h-5zM33 70h12v1h-12zM63 70h4v1h-4zM70 70h1v1h-1zM74 70h1v1h-1zM78 70h1v1h-1zM82 70h1v1h-1zM86 70h1v1h-1zM90 70h1v1h-1zM94 70h1v1h-1zM27 71h5v1h-5zM34 71h11v1h-11zM61 71h4v1h-4zM81 71h1v1h-1zM85 71h1v1h-1zM89 71h1v1h-1zM93 71h1v1h-1zM27 72h6v1h-6zM37 72h8v1h-8zM59 72h4v1h-4zM64 72h1v1h-1zM68 72h1v1h-1zM72 72h1v1h-1zM76 72h1v1h-1zM80 72h1v1h-1zM84 72h1v1h-1zM88 72h1v1h-1zM92 72h1v1h-1zM26 73h6v1h-6zM40 73h5v1h-5zM57 73h3v1h-3zM79 73h1v1h-1zM83 73h1v1h-1zM87 73h1v1h-1zM91 73h1v1h-1zM95 73h1v1h-1zM26 74h5v1h-5zM40 74h6v1h-6zM54 74h5v1h-5zM62 74h1v1h-1zM66 74h1v1h-1zM70 74h1v1h-1zM74 74h1v1h-1zM78 74h1v1h-1zM82 74h1v1h-1zM86 74h1v1h-1zM90 74h1v1h-1zM94 74h1v1h-1zM25 75h6v1h-6zM39 75h7v1h-7zM52 75h4v1h-4zM73 75h1v1h-1zM77 75h1v1h-1zM81 75h1v1h-1zM85 75h1v1h-1zM89 75h1v1h-1zM93 75h1v1h-1zM25 76h5v1h-5zM39 76h7v1h-7zM50 76h4v1h-4zM56 76h1v1h-1zM60 76h1v1h-1zM64 76h1v1h-1zM68 76h1v1h-1zM72 76h1v1h-1zM76 76h1v1h-1zM80 76h1v1h-1zM84 76h1v1h-1zM88 76h1v1h-1zM92 76h1v1h-1zM24 77h6v1h-6zM38 77h7v1h-7zM48 77h3v1h-3zM71 77h1v1h-1zM75 77h1v1h-1zM79 77h1v1h-1zM83 77h1v1h-1zM87 77h1v1h-1zM91 77h1v1h-1zM95 77h1v1h-1zM23 78h6v1h-6zM39 78h4v1h-4zM46 78h3v1h-3zM50 78h1v1h-1zM54 78h1v1h-1zM58 78h1v1h-1zM62 78h1v1h-1zM66 78h1v1h-1zM70 78h1v1h-1zM74 78h1v1h-1zM78 78h1v1h-1zM82 78h1v1h-1zM86 78h1v1h-1zM90 78h1v1h-1zM94 78h1v1h-1zM23 79h5v1h-5zM39 79h8v1h-8zM65 79h1v1h-1zM69 79h1v1h-1zM73 79h1v1h-1zM77 79h1v1h-1zM81 79h1v1h-1zM85 79h1v1h-1zM89 79h1v1h-1zM93 79h1v1h-1zM22 80h6v1h-6zM41 80h4v1h-4zM48 80h1v1h-1zM52 80h1v1h-1zM56 80h1v1h-1zM60 80h1v1h-1zM64 80h1v1h-1zM68 80h1v1h-1zM72 80h1v1h-1zM76 80h1v1h-1zM80 80h1v1h-1zM84 80h1v1h-1zM88 80h1v1h-1zM92 80h1v1h-1zM21 81h6v1h-6zM39 81h4v1h-4zM59 81h1v1h-1zM63 81h1v1h-1zM67 81h1v1h-1zM71 81h1v1h-1zM75 81h1v1h-1zM79 81h1v1h-1zM83 81h1v1h-1zM87 81h1v1h-1zM91 81h1v1h-1zM95 81h1v1h-1zM21 82h6v1h-6zM37 82h3v1h-3zM42 82h1v1h-1zM46 82h1v1h-1zM50 82h1v1h-1zM54 82h1v1h-1zM58 82h1v1h-1zM62 82h1v1h-1zM66 82h1v1h-1zM70 82h1v1h-1zM74 82h1v1h-1zM78 82h1v1h-1zM82 82h1v1h-1zM86 82h1v1h-1zM90 82h1v1h-1zM94 82h1v1h-1zM20 83h6v1h-6zM34 83h4v1h-4zM57 83h1v1h-1zM61 83h1v1h-1zM65 83h1v1h-1zM69 83h1v1h-1zM73 83h1v1h-1zM77 83h1v1h-1zM81 83h1v1h-1zM85 83h1v1h-1zM89 83h1v1h-1zM93 83h1v1h-1zM8 84h4v1h-4zM20 84h5v1h-5zM32 84h5v1h-5zM40 84h1v1h-1zM44 84h1v1h-1zM48 84h1v1h-1zM52 84h1v1h-1zM56 84h1v1h-1zM60 84h1v1h-1zM64 84h1v1h-1zM68 84h1v1h-1zM72 84h1v1h-1zM76 84h1v1h-1zM80 84h1v1h-1zM84 84h1v1h-1zM88 84h1v1h-1zM92 84h1v1h-1zM8 85h4v1h-4zM19 85h7v1h-7zM30 85h4v1h-4zM51 85h1v1h-1zM55 85h1v1h-1zM59 85h1v1h-1zM63 85h1v1h-1zM67 85h1v1h-1zM71 85h1v1h-1zM75 85h1v1h-1zM79 85h1v1h-1zM83 85h1v1h-1zM87 85h1v1h-1zM91 85h1v1h-1zM95 85h1v1h-1zM4 86h11v1h-11zM18 86h8v1h-8zM28 86h3v1h-3zM34 86h1v1h-1zM38 86h1v1h-1zM42 86h1v1h-1zM46 86h1v1h-1zM50 86h1v1h-1zM54 86h1v1h-1zM58 86h1v1h-1zM62 86h1v1h-1zM66 86h1v1h-1zM70 86h1v1h-1zM74 86h1v1h-1zM78 86h1v1h-1zM82 86h1v1h-1zM86 86h1v1h-1zM90 86h1v1h-1zM94 86h1v1h-1zM4 87h11v1h-11zM18 87h6v1h-6zM26 87h3v1h-3zM49 87h1v1h-1zM53 87h1v1h-1zM57 87h1v1h-1zM61 87h1v1h-1zM65 87h1v1h-1zM69 87h1v1h-1zM73 87h1v1h-1zM77 87h1v1h-1zM81 87h1v1h-1zM85 87h1v1h-1zM89 87h1v1h-1zM93 87h1v1h-1zM4 88h11v1h-11zM18 88h4v1h-4zM23 88h4v1h-4zM28 88h1v1h-1zM32 88h1v1h-1zM36 88h1v1h-1zM40 88h1v1h-1zM44 88h1v1h-1zM48 88h1v1h-1zM52 88h1v1h-1zM56 88h1v1h-1zM60 88h1v1h-1zM64 88h1v1h-1zM68 88h1v1h-1zM72 88h1v1h-1zM76 88h1v1h-1zM80 88h1v1h-1zM84 88h1v1h-1zM88 88h1v1h-1zM92 88h1v1h-1zM4 89h4v1h-4zM12 89h3v1h-3zM21 89h4v1h-4zM43 89h1v1h-1zM47 89h1v1h-1zM51 89h1v1h-1zM55 89h1v1h-1zM59 89h1v1h-1zM63 89h1v1h-1zM67 89h1v1h-1zM71 89h1v1h-1zM75 89h1v1h-1zM79 89h1v1h-1zM83 89h1v1h-1zM87 89h1v1h-1zM91 89h1v1h-1zM95 89h1v1h-1zM4 90h11v1h-11zM19 90h4v1h-4zM26 90h1v1h-1zM30 90h1v1h-1zM34 90h1v1h-1zM38 90h1v1h-1zM42 90h1v1h-1zM46 90h1v1h-1zM50 90h1v1h-1zM54 90h1v1h-1zM58 90h1v1h-1zM62 90h1v1h-1zM66 90h1v1h-1zM70 90h1v1h-1zM74 90h1v1h-1zM78 90h1v1h-1zM82 90h1v1h-1zM86 90h1v1h-1zM90 90h1v1h-1zM94 90h1v1h-1zM4 91h11v1h-11zM17 91h3v1h-3zM37 91h1v1h-1zM41 91h1v1h-1zM45 91h1v1h-1zM49 91h1v1h-1zM53 91h1v1h-1zM57 91h1v1h-1zM61 91h1v1h-1zM65 91h1v1h-1zM69 91h1v1h-1zM73 91h1v1h-1zM77 91h1v1h-1zM81 91h1v1h-1zM85 91h1v1h-1zM89 91h1v1h-1zM93 91h1v1h-1zM4 92h14v1h-14zM20 92h1v1h-1zM24 92h1v1h-1zM28 92h1v1h-1zM32 92h1v1h-1zM36 92h1v1h-1zM40 92h1v1h-1zM44 92h1v1h-1zM48 92h1v1h-1zM52 92h1v1h-1zM56 92h1v1h-1zM60 92h1v1h-1zM64 92h1v1h-1zM68 92h1v1h-1zM72 92h1v1h-1zM76 92h1v1h-1zM80 92h1v1h-1zM84 92h1v1h-1zM88 92h1v1h-1zM92 92h1v1h-1zM4 93h12v1h-12zM35 93h1v1h-1zM39 93h1v1h-1zM43 93h1v1h-1zM47 93h1v1h-1zM51 93h1v1h-1zM55 93h1v1h-1zM59 93h1v1h-1zM63 93h1v1h-1zM67 93h1v1h-1zM71 93h1v1h-1zM75 93h1v1h-1zM79 93h1v1h-1zM83 93h1v1h-1zM87 93h1v1h-1zM91 93h1v1h-1zM95 93h1v1h-1zM10 94h5v1h-5zM18 94h1v1h-1zM22 94h1v1h-1zM26 94h1v1h-1zM30 94h1v1h-1zM34 94h1v1h-1zM38 94h1v1h-1zM42 94h1v1h-1zM46 94h1v1h-1zM50 94h1v1h-1zM54 94h1v1h-1zM58 94h1v1h-1zM62 94h1v1h-1zM66 94h1v1h-1zM70 94h1v1h-1zM74 94h1v1h-1zM78 94h1v1h-1zM82 94h1v1h-1zM86 94h1v1h-1zM90 94h1v1h-1zM94 94h1v1h-1zM8 95h3v1h-3zM29 95h1v1h-1zM33 95h1v1h-1zM37 95h1v1h-1zM41 95h1v1h-1zM45 95h1v1h-1zM49 95h1v1h-1zM53 95h1v1h-1zM57 95h1v1h-1zM61 95h1v1h-1zM65 95h1v1h-1zM69 95h1v1h-1zM73 95h1v1h-1zM77 95h1v1h-1zM81 95h1v1h-1zM85 95h1v1h-1zM89 95h1v1h-1zM93 95h1v1h-1zM6 96h3v1h-3zM12 96h1v1h-1zM16 96h1v1h-1zM20 96h1v1h-1zM24 96h1v1h-1zM28 96h1v1h-1zM32 96h1v1h-1zM36 96h1v1h-1zM40 96h1v1h-1zM44 96h1v1h-1zM48 96h1v1h-1zM52 96h1v1h-1zM56 96h1v1h-1zM60 96h1v1h-1zM64 96h1v1h-1zM68 96h1v1h-1zM72 96h1v1h-1zM76 96h1v1h-1zM80 96h1v1h-1zM84 96h1v1h-1zM88 96h1v1h-1zM92 96h1v1h-1zM3 97h4v1h-4zM23 97h1v1h-1zM27 97h1v1h-1zM31 97h1v1h-1zM35 97h1v1h-1zM39 97h1v1h-1zM43 97h1v1h-1zM47 97h1v1h-1zM51 97h1v1h-1zM55 97h1v1h-1zM59 97h1v1h-1zM63 97h1v1h-1zM67 97h1v1h-1zM71 97h1v1h-1zM75 97h1v1h-1zM79 97h1v1h-1zM83 97h1v1h-1zM87 97h1v1h-1zM91 97h1v1h-1zM95 97h1v1h-1zM1 98h4v1h-4zM6 98h1v1h-1zM10 98h1v1h-1zM14 98h1v1h-1zM18 98h1v1h-1zM22 98h1v1h-1zM26 98h1v1h-1zM30 98h1v1h-1zM34 98h1v1h-1zM38 98h1v1h-1zM42 98h1v1h-1zM46 98h1v1h-1zM50 98h1v1h-1zM54 98h1v1h-1zM58 98h1v1h-1zM62 98h1v1h-1zM66 98h1v1h-1zM70 98h1v1h-1zM74 98h1v1h-1zM78 98h1v1h-1zM82 98h1v1h-1zM86 98h1v1h-1zM90 98h1v1h-1zM94 98h1v1h-1zM0 99h3v1h-3zM21 99h1v1h-1zM25 99h1v1h-1zM29 99h1v1h-1zM33 99h1v1h-1zM37 99h1v1h-1zM41 99h1v1h-1zM45 99h1v1h-1zM49 99h1v1h-1zM53 99h1v1h-1zM57 99h1v1h-1zM61 99h1v1h-1zM65 99h1v1h-1zM69 99h1v1h-1zM73 99h1v1h-1zM77 99h1v1h-1zM81 99h1v1h-1zM85 99h1v1h-1zM89 99h1v1h-1zM93 99h1v1h-1zM0 100h1v1h-1zM4 100h1v1h-1zM8 100h1v1h-1zM12 100h1v1h-1zM16 100h1v1h-1zM20 100h1v1h-1zM24 100h1v1h-1zM28 100h1v1h-1zM32 100h1v1h-1zM36 100h1v1h-1zM40 100h1v1h-1zM44 100h1v1h-1zM48 100h1v1h-1zM52 100h1v1h-1zM56 100h1v1h-1zM60 100h1v1h-1zM64 100h1v1h-1zM68 100h1v1h-1zM72 100h1v1h-1zM76 100h1v1h-1zM80 100h1v1h-1zM84 100h1v1h-1zM88 100h1v1h-1zM92 100h1v1h-1zM15 101h1v1h-1zM19 101h1v1h-1zM23 101h1v1h-1zM27 101h1v1h-1zM31 101h1v1h-1zM35 101h1v1h-1zM39 101h1v1h-1zM43 101h1v1h-1zM47 101h1v1h-1zM51 101h1v1h-1zM55 101h1v1h-1zM59 101h1v1h-1zM63 101h1v1h-1zM67 101h1v1h-1zM71 101h1v1h-1zM75 101h1v1h-1zM79 101h1v1h-1zM83 101h1v1h-1zM87 101h1v1h-1zM91 101h1v1h-1zM95 101h1v1h-1zM2 102h1v1h-1zM6 102h1v1h-1zM10 102h1v1h-1zM14 102h1v1h-1zM18 102h1v1h-1zM22 102h1v1h-1zM26 102h1v1h-1zM30 102h1v1h-1zM34 102h1v1h-1zM38 102h1v1h-1zM42 102h1v1h-1zM46 102h1v1h-1zM50 102h1v1h-1zM54 102h1v1h-1zM58 102h1v1h-1zM62 102h1v1h-1zM66 102h1v1h-1zM70 102h1v1h-1zM74 102h1v1h-1zM78 102h1v1h-1zM82 102h1v1h-1zM86 102h1v1h-1zM90 102h1v1h-1zM94 102h1v1h-1zM13 103h1v1h-1zM17 103h1v1h-1zM21 103h1v1h-1zM25 103h1v1h-1zM29 103h1v1h-1zM33 103h1v1h-1zM37 103h1v1h-1zM41 103h1v1h-1zM45 103h1v1h-1zM49 103h1v1h-1zM53 103h1v1h-1zM57 103h1v1h-1zM61 103h1v1h-1zM65 103h1v1h-1zM69 103h1v1h-1zM73 103h1v1h-1zM77 103h1v1h-1zM81 103h1v1h-1zM85 103h1v1h-1zM89 103h1v1h-1zM93 103h1v1h-1zM0 104h1v1h-1zM4 104h1v1h-1zM8 104h1v1h-1zM12 104h1v1h-1zM16 104h1v1h-1zM20 104h1v1h-1zM24 104h1v1h-1zM28 104h1v1h-1zM32 104h1v1h-1zM36 104h1v1h-1zM40 104h1v1h-1zM44 104h1v1h-1zM48 104h1v1h-1zM52 104h1v1h-1zM56 104h1v1h-1zM60 104h1v1h-1zM64 104h1v1h-1zM68 104h1v1h-1zM72 104h1v1h-1zM76 104h1v1h-1zM80 104h1v1h-1zM84 104h1v1h-1zM88 104h1v1h-1zM92 104h1v1h-1zM7 105h1v1h-1zM11 105h1v1h-1zM15 105h1v1h-1zM19 105h1v1h-1zM23 105h1v1h-1zM27 105h1v1h-1zM31 105h1v1h-1zM35 105h1v1h-1zM39 105h1v1h-1zM43 105h1v1h-1zM47 105h1v1h-1zM51 105h1v1h-1zM55 105h1v1h-1zM59 105h1v1h-1zM63 105h1v1h-1zM67 105h1v1h-1zM71 105h1v1h-1zM75 105h1v1h-1zM79 105h1v1h-1zM83 105h1v1h-1zM87 105h1v1h-1zM91 105h1v1h-1zM95 105h1v1h-1zM2 106h1v1h-1zM6 106h1v1h-1zM10 106h1v1h-1zM14 106h1v1h-1zM18 106h1v1h-1zM22 106h1v1h-1zM26 106h1v1h-1zM30 106h1v1h-1zM34 106h1v1h-1zM38 106h1v1h-1zM42 106h1v1h-1zM46 106h1v1h-1zM50 106h1v1h-1zM54 106h1v1h-1zM58 106h1v1h-1zM62 106h1v1h-1zM66 106h1v1h-1zM70 106h1v1h-1zM74 106h1v1h-1zM78 106h1v1h-1zM82 106h1v1h-1zM86 106h1v1h-1zM90 106h1v1h-1zM94 106h1v1h-1zM1 107h1v1h-1zM5 107h1v1h-1zM9 107h1v1h-1zM13 107h1v1h-1zM17 107h1v1h-1zM21 107h1v1h-1zM25 107h1v1h-1zM29 107h1v1h-1zM33 107h1v1h-1zM37 107h1v1h-1zM41 107h1v1h-1zM45 107h1v1h-1zM49 107h1v1h-1zM53 107h1v1h-1zM57 107h1v1h-1zM61 107h1v1h-1zM65 107h1v1h-1zM69 107h1v1h-1zM73 107h1v1h-1zM77 107h1v1h-1zM81 107h1v1h-1zM85 107h1v1h-1zM89 107h1v1h-1zM93 107h1v1h-1z"/></svg><span class="tarot-name">Der engagierte Arbeitnehmer</span></span></span></button>
+        <button class="tarot-card" type="button" data-card="2" aria-label="Karte 2 ziehen"><span class="tarot-inner"><span class="tarot-face tarot-back"></span><span class="tarot-face tarot-front"><span class="tarot-num">XXII</span><svg class="tarot-art" viewBox="0 0 96 108" shape-rendering="crispEdges" aria-hidden="true" focusable="false"><path fill="currentColor" d="M78 8h2v1h-2zM77 9h4v1h-4zM17 10h2v1h-2zM77 10h4v1h-4zM15 11h3v1h-3zM78 11h2v1h-2zM14 12h3v1h-3zM45 12h2v1h-2zM13 13h4v1h-4zM45 13h2v1h-2zM13 14h3v1h-3zM12 15h4v1h-4zM12 16h4v1h-4zM12 17h4v1h-4zM12 18h5v1h-5zM12 19h5v1h-5zM12 20h6v1h-6zM13 21h6v1h-6zM13 22h8v1h-8zM25 22h1v1h-1zM14 23h11v1h-11zM15 24h9v1h-9zM86 24h1v1h-1zM17 25h5v1h-5zM86 25h1v1h-1zM33 30h2v1h-2zM33 31h2v1h-2zM66 33h6v1h-6zM63 34h4v1h-4zM68 34h1v1h-1zM70 34h5v1h-5zM61 35h3v1h-3zM65 35h1v1h-1zM67 35h1v1h-1zM69 35h1v1h-1zM71 35h1v1h-1zM73 35h1v1h-1zM75 35h2v1h-2zM6 36h2v1h-2zM59 36h2v1h-2zM62 36h1v1h-1zM64 36h1v1h-1zM66 36h1v1h-1zM68 36h1v1h-1zM70 36h1v1h-1zM72 36h1v1h-1zM74 36h1v1h-1zM76 36h3v1h-3zM6 37h2v1h-2zM58 37h2v1h-2zM61 37h1v1h-1zM63 37h1v1h-1zM65 37h1v1h-1zM67 37h1v1h-1zM69 37h1v1h-1zM71 37h1v1h-1zM73 37h1v1h-1zM75 37h1v1h-1zM77 37h3v1h-3zM57 38h2v1h-2zM60 38h1v1h-1zM62 38h1v1h-1zM64 38h1v1h-1zM66 38h1v1h-1zM68 38h1v1h-1zM70 38h1v1h-1zM72 38h1v1h-1zM74 38h1v1h-1zM76 38h1v1h-1zM78 38h3v1h-3zM56 39h2v1h-2zM59 39h1v1h-1zM61 39h1v1h-1zM63 39h1v1h-1zM65 39h1v1h-1zM67 39h1v1h-1zM69 39h1v1h-1zM71 39h1v1h-1zM77 39h1v1h-1zM79 39h3v1h-3zM55 40h2v1h-2zM58 40h1v1h-1zM60 40h1v1h-1zM62 40h1v1h-1zM64 40h1v1h-1zM66 40h1v1h-1zM68 40h1v1h-1zM70 40h1v1h-1zM78 40h1v1h-1zM80 40h3v1h-3zM39 41h2v1h-2zM55 41h1v1h-1zM57 41h1v1h-1zM59 41h1v1h-1zM61 41h1v1h-1zM63 41h1v1h-1zM65 41h1v1h-1zM67 41h1v1h-1zM69 41h1v1h-1zM79 41h1v1h-1zM81 41h2v1h-2zM41 42h1v1h-1zM54 42h1v1h-1zM56 42h1v1h-1zM58 42h1v1h-1zM60 42h1v1h-1zM62 42h1v1h-1zM64 42h1v1h-1zM66 42h1v1h-1zM68 42h1v1h-1zM80 42h1v1h-1zM82 42h2v1h-2zM41 43h1v1h-1zM44 43h5v1h-5zM54 43h2v1h-2zM57 43h1v1h-1zM59 43h1v1h-1zM61 43h1v1h-1zM63 43h1v1h-1zM65 43h1v1h-1zM67 43h1v1h-1zM79 43h1v1h-1zM81 43h1v1h-1zM83 43h1v1h-1zM38 44h1v1h-1zM43 44h7v1h-7zM53 44h2v1h-2zM56 44h1v1h-1zM58 44h1v1h-1zM60 44h1v1h-1zM62 44h1v1h-1zM64 44h1v1h-1zM66 44h1v1h-1zM68 44h1v1h-1zM80 44h1v1h-1zM82 44h3v1h-3zM43 45h8v1h-8zM53 45h1v1h-1zM55 45h1v1h-1zM57 45h1v1h-1zM59 45h1v1h-1zM61 45h1v1h-1zM63 45h1v1h-1zM65 45h1v1h-1zM67 45h1v1h-1zM69 45h1v1h-1zM79 45h1v1h-1zM81 45h1v1h-1zM83 45h2v1h-2zM43 46h8v1h-8zM53 46h2v1h-2zM56 46h1v1h-1zM58 46h1v1h-1zM60 46h1v1h-1zM62 46h1v1h-1zM64 46h1v1h-1zM66 46h1v1h-1zM68 46h1v1h-1zM78 46h1v1h-1zM80 46h1v1h-1zM82 46h1v1h-1zM84 46h1v1h-1zM43 47h8v1h-8zM53 47h1v1h-1zM55 47h1v1h-1zM57 47h1v1h-1zM59 47h1v1h-1zM61 47h1v1h-1zM63 47h1v1h-1zM65 47h1v1h-1zM67 47h1v1h-1zM69 47h1v1h-1zM77 47h1v1h-1zM79 47h1v1h-1zM81 47h1v1h-1zM83 47h2v1h-2zM43 48h5v1h-5zM50 48h1v1h-1zM53 48h2v1h-2zM56 48h1v1h-1zM58 48h1v1h-1zM60 48h1v1h-1zM62 48h1v1h-1zM64 48h1v1h-1zM66 48h1v1h-1zM68 48h1v1h-1zM70 48h1v1h-1zM72 48h1v1h-1zM76 48h1v1h-1zM78 48h1v1h-1zM80 48h1v1h-1zM82 48h1v1h-1zM84 48h1v1h-1zM44 49h6v1h-6zM53 49h1v1h-1zM55 49h1v1h-1zM57 49h1v1h-1zM59 49h1v1h-1zM61 49h1v1h-1zM63 49h1v1h-1zM65 49h1v1h-1zM67 49h1v1h-1zM69 49h1v1h-1zM71 49h1v1h-1zM73 49h1v1h-1zM75 49h1v1h-1zM77 49h1v1h-1zM79 49h1v1h-1zM81 49h1v1h-1zM83 49h2v1h-2zM41 50h8v1h-8zM54 50h1v1h-1zM56 50h1v1h-1zM58 50h1v1h-1zM60 50h1v1h-1zM62 50h1v1h-1zM64 50h1v1h-1zM66 50h1v1h-1zM68 50h1v1h-1zM70 50h1v1h-1zM72 50h1v1h-1zM74 50h1v1h-1zM76 50h1v1h-1zM78 50h1v1h-1zM80 50h1v1h-1zM82 50h1v1h-1zM84 50h1v1h-1zM40 51h5v1h-5zM55 51h1v1h-1zM57 51h1v1h-1zM59 51h1v1h-1zM61 51h1v1h-1zM63 51h1v1h-1zM65 51h1v1h-1zM67 51h1v1h-1zM69 51h1v1h-1zM71 51h1v1h-1zM73 51h1v1h-1zM75 51h1v1h-1zM77 51h1v1h-1zM79 51h1v1h-1zM81 51h1v1h-1zM83 51h2v1h-2zM39 52h3v1h-3zM51 52h4v1h-4zM56 52h1v1h-1zM58 52h1v1h-1zM60 52h1v1h-1zM62 52h1v1h-1zM64 52h1v1h-1zM66 52h1v1h-1zM68 52h1v1h-1zM70 52h1v1h-1zM72 52h1v1h-1zM74 52h1v1h-1zM76 52h1v1h-1zM78 52h1v1h-1zM80 52h1v1h-1zM82 52h1v1h-1zM84 52h1v1h-1zM38 53h3v1h-3zM42 53h3v1h-3zM50 53h5v1h-5zM57 53h1v1h-1zM59 53h1v1h-1zM61 53h1v1h-1zM63 53h1v1h-1zM65 53h1v1h-1zM67 53h1v1h-1zM69 53h1v1h-1zM71 53h1v1h-1zM73 53h1v1h-1zM75 53h1v1h-1zM77 53h1v1h-1zM79 53h1v1h-1zM81 53h1v1h-1zM83 53h2v1h-2zM37 54h4v1h-4zM42 54h6v1h-6zM49 54h5v1h-5zM56 54h1v1h-1zM58 54h1v1h-1zM60 54h1v1h-1zM62 54h1v1h-1zM64 54h1v1h-1zM66 54h1v1h-1zM68 54h1v1h-1zM70 54h1v1h-1zM72 54h1v1h-1zM74 54h1v1h-1zM76 54h1v1h-1zM78 54h1v1h-1zM80 54h1v1h-1zM82 54h1v1h-1zM84 54h1v1h-1zM37 55h4v1h-4zM42 55h11v1h-11zM55 55h1v1h-1zM57 55h1v1h-1zM59 55h1v1h-1zM61 55h1v1h-1zM63 55h1v1h-1zM65 55h1v1h-1zM67 55h1v1h-1zM69 55h1v1h-1zM71 55h1v1h-1zM73 55h1v1h-1zM75 55h1v1h-1zM77 55h1v1h-1zM79 55h1v1h-1zM81 55h1v1h-1zM83 55h1v1h-1zM36 56h5v1h-5zM44 56h8v1h-8zM54 56h1v1h-1zM56 56h1v1h-1zM58 56h1v1h-1zM60 56h1v1h-1zM62 56h1v1h-1zM64 56h1v1h-1zM66 56h1v1h-1zM68 56h1v1h-1zM70 56h1v1h-1zM72 56h1v1h-1zM74 56h1v1h-1zM76 56h1v1h-1zM78 56h1v1h-1zM80 56h1v1h-1zM82 56h2v1h-2zM94 56h2v1h-2zM35 57h8v1h-8zM46 57h5v1h-5zM53 57h3v1h-3zM57 57h1v1h-1zM59 57h1v1h-1zM61 57h1v1h-1zM63 57h1v1h-1zM65 57h1v1h-1zM67 57h1v1h-1zM69 57h1v1h-1zM71 57h1v1h-1zM73 57h1v1h-1zM75 57h1v1h-1zM77 57h1v1h-1zM79 57h1v1h-1zM81 57h3v1h-3zM92 57h4v1h-4zM34 58h8v1h-8zM44 58h1v1h-1zM48 58h2v1h-2zM52 58h5v1h-5zM58 58h1v1h-1zM60 58h1v1h-1zM62 58h1v1h-1zM64 58h1v1h-1zM66 58h1v1h-1zM68 58h1v1h-1zM70 58h1v1h-1zM72 58h1v1h-1zM74 58h1v1h-1zM76 58h1v1h-1zM78 58h1v1h-1zM80 58h1v1h-1zM82 58h1v1h-1zM90 58h5v1h-5zM34 59h8v1h-8zM44 59h4v1h-4zM51 59h4v1h-4zM56 59h2v1h-2zM59 59h1v1h-1zM61 59h1v1h-1zM63 59h1v1h-1zM65 59h1v1h-1zM67 59h1v1h-1zM69 59h1v1h-1zM71 59h1v1h-1zM73 59h1v1h-1zM75 59h1v1h-1zM77 59h1v1h-1zM79 59h1v1h-1zM81 59h1v1h-1zM88 59h3v1h-3zM33 60h21v1h-21zM56 60h3v1h-3zM60 60h1v1h-1zM62 60h1v1h-1zM64 60h1v1h-1zM66 60h1v1h-1zM68 60h1v1h-1zM70 60h1v1h-1zM72 60h1v1h-1zM74 60h1v1h-1zM76 60h1v1h-1zM78 60h1v1h-1zM80 60h2v1h-2zM86 60h3v1h-3zM92 60h1v1h-1zM32 61h11v1h-11zM44 61h2v1h-2zM47 61h4v1h-4zM57 61h3v1h-3zM61 61h1v1h-1zM63 61h1v1h-1zM65 61h1v1h-1zM67 61h1v1h-1zM69 61h1v1h-1zM71 61h1v1h-1zM73 61h1v1h-1zM75 61h1v1h-1zM77 61h1v1h-1zM79 61h2v1h-2zM83 61h4v1h-4zM32 62h10v1h-10zM44 62h2v1h-2zM58 62h3v1h-3zM62 62h1v1h-1zM64 62h1v1h-1zM66 62h1v1h-1zM68 62h1v1h-1zM70 62h1v1h-1zM72 62h1v1h-1zM74 62h1v1h-1zM76 62h1v1h-1zM78 62h2v1h-2zM81 62h4v1h-4zM86 62h1v1h-1zM90 62h1v1h-1zM94 62h1v1h-1zM31 63h11v1h-11zM44 63h2v1h-2zM60 63h2v1h-2zM63 63h1v1h-1zM65 63h1v1h-1zM67 63h1v1h-1zM69 63h1v1h-1zM71 63h1v1h-1zM73 63h1v1h-1zM75 63h3v1h-3zM79 63h4v1h-4zM30 64h11v1h-11zM45 64h1v1h-1zM62 64h3v1h-3zM66 64h1v1h-1zM68 64h1v1h-1zM70 64h1v1h-1zM72 64h1v1h-1zM74 64h2v1h-2zM77 64h4v1h-4zM84 64h1v1h-1zM88 64h1v1h-1zM92 64h1v1h-1zM29 65h11v1h-11zM64 65h14v1h-14zM95 65h1v1h-1zM28 66h4v1h-4zM72 66h4v1h-4zM78 66h1v1h-1zM82 66h1v1h-1zM86 66h1v1h-1zM90 66h1v1h-1zM94 66h1v1h-1zM28 67h4v1h-4zM33 67h5v1h-5zM70 67h4v1h-4zM93 67h1v1h-1zM27 68h4v1h-4zM32 68h10v1h-10zM68 68h3v1h-3zM72 68h1v1h-1zM76 68h1v1h-1zM80 68h1v1h-1zM84 68h1v1h-1zM88 68h1v1h-1zM92 68h1v1h-1zM26 69h5v1h-5zM32 69h12v1h-12zM66 69h3v1h-3zM87 69h1v1h-1zM91 69h1v1h-1zM95 69h1v1h-1zM26 70h5v1h-5zM33 70h12v1h-12zM63 70h4v1h-4zM70 70h1v1h-1zM74 70h1v1h-1zM78 70h1v1h-1zM82 70h1v1h-1zM86 70h1v1h-1zM90 70h1v1h-1zM94 70h1v1h-1zM27 71h5v1h-5zM34 71h11v1h-11zM61 71h4v1h-4zM81 71h1v1h-1zM85 71h1v1h-1zM89 71h1v1h-1zM93 71h1v1h-1zM27 72h6v1h-6zM37 72h8v1h-8zM59 72h4v1h-4zM64 72h1v1h-1zM68 72h1v1h-1zM72 72h1v1h-1zM76 72h1v1h-1zM80 72h1v1h-1zM84 72h1v1h-1zM88 72h1v1h-1zM92 72h1v1h-1zM26 73h6v1h-6zM40 73h5v1h-5zM57 73h3v1h-3zM79 73h1v1h-1zM83 73h1v1h-1zM87 73h1v1h-1zM91 73h1v1h-1zM95 73h1v1h-1zM26 74h5v1h-5zM40 74h6v1h-6zM54 74h5v1h-5zM62 74h1v1h-1zM66 74h1v1h-1zM70 74h1v1h-1zM74 74h1v1h-1zM78 74h1v1h-1zM82 74h1v1h-1zM86 74h1v1h-1zM90 74h1v1h-1zM94 74h1v1h-1zM25 75h6v1h-6zM39 75h7v1h-7zM52 75h4v1h-4zM73 75h1v1h-1zM77 75h1v1h-1zM81 75h1v1h-1zM85 75h1v1h-1zM89 75h1v1h-1zM93 75h1v1h-1zM25 76h5v1h-5zM39 76h7v1h-7zM50 76h4v1h-4zM56 76h1v1h-1zM60 76h1v1h-1zM64 76h1v1h-1zM68 76h1v1h-1zM72 76h1v1h-1zM76 76h1v1h-1zM80 76h1v1h-1zM84 76h1v1h-1zM88 76h1v1h-1zM92 76h1v1h-1zM24 77h6v1h-6zM38 77h7v1h-7zM48 77h3v1h-3zM71 77h1v1h-1zM75 77h1v1h-1zM79 77h1v1h-1zM83 77h1v1h-1zM87 77h1v1h-1zM91 77h1v1h-1zM95 77h1v1h-1zM23 78h6v1h-6zM39 78h4v1h-4zM46 78h3v1h-3zM50 78h1v1h-1zM54 78h1v1h-1zM58 78h1v1h-1zM62 78h1v1h-1zM66 78h1v1h-1zM70 78h1v1h-1zM74 78h1v1h-1zM78 78h1v1h-1zM82 78h1v1h-1zM86 78h1v1h-1zM90 78h1v1h-1zM94 78h1v1h-1zM23 79h5v1h-5zM39 79h8v1h-8zM65 79h1v1h-1zM69 79h1v1h-1zM73 79h1v1h-1zM77 79h1v1h-1zM81 79h1v1h-1zM85 79h1v1h-1zM89 79h1v1h-1zM93 79h1v1h-1zM22 80h6v1h-6zM41 80h4v1h-4zM48 80h1v1h-1zM52 80h1v1h-1zM56 80h1v1h-1zM60 80h1v1h-1zM64 80h1v1h-1zM68 80h1v1h-1zM72 80h1v1h-1zM76 80h1v1h-1zM80 80h1v1h-1zM84 80h1v1h-1zM88 80h1v1h-1zM92 80h1v1h-1zM21 81h6v1h-6zM39 81h4v1h-4zM59 81h1v1h-1zM63 81h1v1h-1zM67 81h1v1h-1zM71 81h1v1h-1zM75 81h1v1h-1zM79 81h1v1h-1zM83 81h1v1h-1zM87 81h1v1h-1zM91 81h1v1h-1zM95 81h1v1h-1zM21 82h6v1h-6zM37 82h3v1h-3zM42 82h1v1h-1zM46 82h1v1h-1zM50 82h1v1h-1zM54 82h1v1h-1zM58 82h1v1h-1zM62 82h1v1h-1zM66 82h1v1h-1zM70 82h1v1h-1zM74 82h1v1h-1zM78 82h1v1h-1zM82 82h1v1h-1zM86 82h1v1h-1zM90 82h1v1h-1zM94 82h1v1h-1zM20 83h6v1h-6zM34 83h4v1h-4zM57 83h1v1h-1zM61 83h1v1h-1zM65 83h1v1h-1zM69 83h1v1h-1zM73 83h1v1h-1zM77 83h1v1h-1zM81 83h1v1h-1zM85 83h1v1h-1zM89 83h1v1h-1zM93 83h1v1h-1zM8 84h4v1h-4zM20 84h5v1h-5zM32 84h5v1h-5zM40 84h1v1h-1zM44 84h1v1h-1zM48 84h1v1h-1zM52 84h1v1h-1zM56 84h1v1h-1zM60 84h1v1h-1zM64 84h1v1h-1zM68 84h1v1h-1zM72 84h1v1h-1zM76 84h1v1h-1zM80 84h1v1h-1zM84 84h1v1h-1zM88 84h1v1h-1zM92 84h1v1h-1zM8 85h4v1h-4zM19 85h7v1h-7zM30 85h4v1h-4zM51 85h1v1h-1zM55 85h1v1h-1zM59 85h1v1h-1zM63 85h1v1h-1zM67 85h1v1h-1zM71 85h1v1h-1zM75 85h1v1h-1zM79 85h1v1h-1zM83 85h1v1h-1zM87 85h1v1h-1zM91 85h1v1h-1zM95 85h1v1h-1zM4 86h11v1h-11zM18 86h8v1h-8zM28 86h3v1h-3zM34 86h1v1h-1zM38 86h1v1h-1zM42 86h1v1h-1zM46 86h1v1h-1zM50 86h1v1h-1zM54 86h1v1h-1zM58 86h1v1h-1zM62 86h1v1h-1zM66 86h1v1h-1zM70 86h1v1h-1zM74 86h1v1h-1zM78 86h1v1h-1zM82 86h1v1h-1zM86 86h1v1h-1zM90 86h1v1h-1zM94 86h1v1h-1zM4 87h11v1h-11zM18 87h6v1h-6zM26 87h3v1h-3zM49 87h1v1h-1zM53 87h1v1h-1zM57 87h1v1h-1zM61 87h1v1h-1zM65 87h1v1h-1zM69 87h1v1h-1zM73 87h1v1h-1zM77 87h1v1h-1zM81 87h1v1h-1zM85 87h1v1h-1zM89 87h1v1h-1zM93 87h1v1h-1zM4 88h11v1h-11zM18 88h4v1h-4zM23 88h4v1h-4zM28 88h1v1h-1zM32 88h1v1h-1zM36 88h1v1h-1zM40 88h1v1h-1zM44 88h1v1h-1zM48 88h1v1h-1zM52 88h1v1h-1zM56 88h1v1h-1zM60 88h1v1h-1zM64 88h1v1h-1zM68 88h1v1h-1zM72 88h1v1h-1zM76 88h1v1h-1zM80 88h1v1h-1zM84 88h1v1h-1zM88 88h1v1h-1zM92 88h1v1h-1zM4 89h4v1h-4zM12 89h3v1h-3zM21 89h4v1h-4zM43 89h1v1h-1zM47 89h1v1h-1zM51 89h1v1h-1zM55 89h1v1h-1zM59 89h1v1h-1zM63 89h1v1h-1zM67 89h1v1h-1zM71 89h1v1h-1zM75 89h1v1h-1zM79 89h1v1h-1zM83 89h1v1h-1zM87 89h1v1h-1zM91 89h1v1h-1zM95 89h1v1h-1zM4 90h11v1h-11zM19 90h4v1h-4zM26 90h1v1h-1zM30 90h1v1h-1zM34 90h1v1h-1zM38 90h1v1h-1zM42 90h1v1h-1zM46 90h1v1h-1zM50 90h1v1h-1zM54 90h1v1h-1zM58 90h1v1h-1zM62 90h1v1h-1zM66 90h1v1h-1zM70 90h1v1h-1zM74 90h1v1h-1zM78 90h1v1h-1zM82 90h1v1h-1zM86 90h1v1h-1zM90 90h1v1h-1zM94 90h1v1h-1zM4 91h11v1h-11zM17 91h3v1h-3zM37 91h1v1h-1zM41 91h1v1h-1zM45 91h1v1h-1zM49 91h1v1h-1zM53 91h1v1h-1zM57 91h1v1h-1zM61 91h1v1h-1zM65 91h1v1h-1zM69 91h1v1h-1zM73 91h1v1h-1zM77 91h1v1h-1zM81 91h1v1h-1zM85 91h1v1h-1zM89 91h1v1h-1zM93 91h1v1h-1zM4 92h14v1h-14zM20 92h1v1h-1zM24 92h1v1h-1zM28 92h1v1h-1zM32 92h1v1h-1zM36 92h1v1h-1zM40 92h1v1h-1zM44 92h1v1h-1zM48 92h1v1h-1zM52 92h1v1h-1zM56 92h1v1h-1zM60 92h1v1h-1zM64 92h1v1h-1zM68 92h1v1h-1zM72 92h1v1h-1zM76 92h1v1h-1zM80 92h1v1h-1zM84 92h1v1h-1zM88 92h1v1h-1zM92 92h1v1h-1zM4 93h12v1h-12zM35 93h1v1h-1zM39 93h1v1h-1zM43 93h1v1h-1zM47 93h1v1h-1zM51 93h1v1h-1zM55 93h1v1h-1zM59 93h1v1h-1zM63 93h1v1h-1zM67 93h1v1h-1zM71 93h1v1h-1zM75 93h1v1h-1zM79 93h1v1h-1zM83 93h1v1h-1zM87 93h1v1h-1zM91 93h1v1h-1zM95 93h1v1h-1zM10 94h5v1h-5zM18 94h1v1h-1zM22 94h1v1h-1zM26 94h1v1h-1zM30 94h1v1h-1zM34 94h1v1h-1zM38 94h1v1h-1zM42 94h1v1h-1zM46 94h1v1h-1zM50 94h1v1h-1zM54 94h1v1h-1zM58 94h1v1h-1zM62 94h1v1h-1zM66 94h1v1h-1zM70 94h1v1h-1zM74 94h1v1h-1zM78 94h1v1h-1zM82 94h1v1h-1zM86 94h1v1h-1zM90 94h1v1h-1zM94 94h1v1h-1zM8 95h3v1h-3zM29 95h1v1h-1zM33 95h1v1h-1zM37 95h1v1h-1zM41 95h1v1h-1zM45 95h1v1h-1zM49 95h1v1h-1zM53 95h1v1h-1zM57 95h1v1h-1zM61 95h1v1h-1zM65 95h1v1h-1zM69 95h1v1h-1zM73 95h1v1h-1zM77 95h1v1h-1zM81 95h1v1h-1zM85 95h1v1h-1zM89 95h1v1h-1zM93 95h1v1h-1zM6 96h3v1h-3zM12 96h1v1h-1zM16 96h1v1h-1zM20 96h1v1h-1zM24 96h1v1h-1zM28 96h1v1h-1zM32 96h1v1h-1zM36 96h1v1h-1zM40 96h1v1h-1zM44 96h1v1h-1zM48 96h1v1h-1zM52 96h1v1h-1zM56 96h1v1h-1zM60 96h1v1h-1zM64 96h1v1h-1zM68 96h1v1h-1zM72 96h1v1h-1zM76 96h1v1h-1zM80 96h1v1h-1zM84 96h1v1h-1zM88 96h1v1h-1zM92 96h1v1h-1zM3 97h4v1h-4zM23 97h1v1h-1zM27 97h1v1h-1zM31 97h1v1h-1zM35 97h1v1h-1zM39 97h1v1h-1zM43 97h1v1h-1zM47 97h1v1h-1zM51 97h1v1h-1zM55 97h1v1h-1zM59 97h1v1h-1zM63 97h1v1h-1zM67 97h1v1h-1zM71 97h1v1h-1zM75 97h1v1h-1zM79 97h1v1h-1zM83 97h1v1h-1zM87 97h1v1h-1zM91 97h1v1h-1zM95 97h1v1h-1zM1 98h4v1h-4zM6 98h1v1h-1zM10 98h1v1h-1zM14 98h1v1h-1zM18 98h1v1h-1zM22 98h1v1h-1zM26 98h1v1h-1zM30 98h1v1h-1zM34 98h1v1h-1zM38 98h1v1h-1zM42 98h1v1h-1zM46 98h1v1h-1zM50 98h1v1h-1zM54 98h1v1h-1zM58 98h1v1h-1zM62 98h1v1h-1zM66 98h1v1h-1zM70 98h1v1h-1zM74 98h1v1h-1zM78 98h1v1h-1zM82 98h1v1h-1zM86 98h1v1h-1zM90 98h1v1h-1zM94 98h1v1h-1zM0 99h3v1h-3zM21 99h1v1h-1zM25 99h1v1h-1zM29 99h1v1h-1zM33 99h1v1h-1zM37 99h1v1h-1zM41 99h1v1h-1zM45 99h1v1h-1zM49 99h1v1h-1zM53 99h1v1h-1zM57 99h1v1h-1zM61 99h1v1h-1zM65 99h1v1h-1zM69 99h1v1h-1zM73 99h1v1h-1zM77 99h1v1h-1zM81 99h1v1h-1zM85 99h1v1h-1zM89 99h1v1h-1zM93 99h1v1h-1zM0 100h1v1h-1zM4 100h1v1h-1zM8 100h1v1h-1zM12 100h1v1h-1zM16 100h1v1h-1zM20 100h1v1h-1zM24 100h1v1h-1zM28 100h1v1h-1zM32 100h1v1h-1zM36 100h1v1h-1zM40 100h1v1h-1zM44 100h1v1h-1zM48 100h1v1h-1zM52 100h1v1h-1zM56 100h1v1h-1zM60 100h1v1h-1zM64 100h1v1h-1zM68 100h1v1h-1zM72 100h1v1h-1zM76 100h1v1h-1zM80 100h1v1h-1zM84 100h1v1h-1zM88 100h1v1h-1zM92 100h1v1h-1zM15 101h1v1h-1zM19 101h1v1h-1zM23 101h1v1h-1zM27 101h1v1h-1zM31 101h1v1h-1zM35 101h1v1h-1zM39 101h1v1h-1zM43 101h1v1h-1zM47 101h1v1h-1zM51 101h1v1h-1zM55 101h1v1h-1zM59 101h1v1h-1zM63 101h1v1h-1zM67 101h1v1h-1zM71 101h1v1h-1zM75 101h1v1h-1zM79 101h1v1h-1zM83 101h1v1h-1zM87 101h1v1h-1zM91 101h1v1h-1zM95 101h1v1h-1zM2 102h1v1h-1zM6 102h1v1h-1zM10 102h1v1h-1zM14 102h1v1h-1zM18 102h1v1h-1zM22 102h1v1h-1zM26 102h1v1h-1zM30 102h1v1h-1zM34 102h1v1h-1zM38 102h1v1h-1zM42 102h1v1h-1zM46 102h1v1h-1zM50 102h1v1h-1zM54 102h1v1h-1zM58 102h1v1h-1zM62 102h1v1h-1zM66 102h1v1h-1zM70 102h1v1h-1zM74 102h1v1h-1zM78 102h1v1h-1zM82 102h1v1h-1zM86 102h1v1h-1zM90 102h1v1h-1zM94 102h1v1h-1zM13 103h1v1h-1zM17 103h1v1h-1zM21 103h1v1h-1zM25 103h1v1h-1zM29 103h1v1h-1zM33 103h1v1h-1zM37 103h1v1h-1zM41 103h1v1h-1zM45 103h1v1h-1zM49 103h1v1h-1zM53 103h1v1h-1zM57 103h1v1h-1zM61 103h1v1h-1zM65 103h1v1h-1zM69 103h1v1h-1zM73 103h1v1h-1zM77 103h1v1h-1zM81 103h1v1h-1zM85 103h1v1h-1zM89 103h1v1h-1zM93 103h1v1h-1zM0 104h1v1h-1zM4 104h1v1h-1zM8 104h1v1h-1zM12 104h1v1h-1zM16 104h1v1h-1zM20 104h1v1h-1zM24 104h1v1h-1zM28 104h1v1h-1zM32 104h1v1h-1zM36 104h1v1h-1zM40 104h1v1h-1zM44 104h1v1h-1zM48 104h1v1h-1zM52 104h1v1h-1zM56 104h1v1h-1zM60 104h1v1h-1zM64 104h1v1h-1zM68 104h1v1h-1zM72 104h1v1h-1zM76 104h1v1h-1zM80 104h1v1h-1zM84 104h1v1h-1zM88 104h1v1h-1zM92 104h1v1h-1zM7 105h1v1h-1zM11 105h1v1h-1zM15 105h1v1h-1zM19 105h1v1h-1zM23 105h1v1h-1zM27 105h1v1h-1zM31 105h1v1h-1zM35 105h1v1h-1zM39 105h1v1h-1zM43 105h1v1h-1zM47 105h1v1h-1zM51 105h1v1h-1zM55 105h1v1h-1zM59 105h1v1h-1zM63 105h1v1h-1zM67 105h1v1h-1zM71 105h1v1h-1zM75 105h1v1h-1zM79 105h1v1h-1zM83 105h1v1h-1zM87 105h1v1h-1zM91 105h1v1h-1zM95 105h1v1h-1zM2 106h1v1h-1zM6 106h1v1h-1zM10 106h1v1h-1zM14 106h1v1h-1zM18 106h1v1h-1zM22 106h1v1h-1zM26 106h1v1h-1zM30 106h1v1h-1zM34 106h1v1h-1zM38 106h1v1h-1zM42 106h1v1h-1zM46 106h1v1h-1zM50 106h1v1h-1zM54 106h1v1h-1zM58 106h1v1h-1zM62 106h1v1h-1zM66 106h1v1h-1zM70 106h1v1h-1zM74 106h1v1h-1zM78 106h1v1h-1zM82 106h1v1h-1zM86 106h1v1h-1zM90 106h1v1h-1zM94 106h1v1h-1zM1 107h1v1h-1zM5 107h1v1h-1zM9 107h1v1h-1zM13 107h1v1h-1zM17 107h1v1h-1zM21 107h1v1h-1zM25 107h1v1h-1zM29 107h1v1h-1zM33 107h1v1h-1zM37 107h1v1h-1zM41 107h1v1h-1zM45 107h1v1h-1zM49 107h1v1h-1zM53 107h1v1h-1zM57 107h1v1h-1zM61 107h1v1h-1zM65 107h1v1h-1zM69 107h1v1h-1zM73 107h1v1h-1zM77 107h1v1h-1zM81 107h1v1h-1zM85 107h1v1h-1zM89 107h1v1h-1zM93 107h1v1h-1z"/></svg><span class="tarot-name">Der engagierte Arbeitnehmer</span></span></span></button>
+        <button class="tarot-card" type="button" data-card="3" aria-label="Karte 3 ziehen"><span class="tarot-inner"><span class="tarot-face tarot-back"></span><span class="tarot-face tarot-front"><span class="tarot-num">XXII</span><svg class="tarot-art" viewBox="0 0 96 108" shape-rendering="crispEdges" aria-hidden="true" focusable="false"><path fill="currentColor" d="M78 8h2v1h-2zM77 9h4v1h-4zM17 10h2v1h-2zM77 10h4v1h-4zM15 11h3v1h-3zM78 11h2v1h-2zM14 12h3v1h-3zM45 12h2v1h-2zM13 13h4v1h-4zM45 13h2v1h-2zM13 14h3v1h-3zM12 15h4v1h-4zM12 16h4v1h-4zM12 17h4v1h-4zM12 18h5v1h-5zM12 19h5v1h-5zM12 20h6v1h-6zM13 21h6v1h-6zM13 22h8v1h-8zM25 22h1v1h-1zM14 23h11v1h-11zM15 24h9v1h-9zM86 24h1v1h-1zM17 25h5v1h-5zM86 25h1v1h-1zM33 30h2v1h-2zM33 31h2v1h-2zM66 33h6v1h-6zM63 34h4v1h-4zM68 34h1v1h-1zM70 34h5v1h-5zM61 35h3v1h-3zM65 35h1v1h-1zM67 35h1v1h-1zM69 35h1v1h-1zM71 35h1v1h-1zM73 35h1v1h-1zM75 35h2v1h-2zM6 36h2v1h-2zM59 36h2v1h-2zM62 36h1v1h-1zM64 36h1v1h-1zM66 36h1v1h-1zM68 36h1v1h-1zM70 36h1v1h-1zM72 36h1v1h-1zM74 36h1v1h-1zM76 36h3v1h-3zM6 37h2v1h-2zM58 37h2v1h-2zM61 37h1v1h-1zM63 37h1v1h-1zM65 37h1v1h-1zM67 37h1v1h-1zM69 37h1v1h-1zM71 37h1v1h-1zM73 37h1v1h-1zM75 37h1v1h-1zM77 37h3v1h-3zM57 38h2v1h-2zM60 38h1v1h-1zM62 38h1v1h-1zM64 38h1v1h-1zM66 38h1v1h-1zM68 38h1v1h-1zM70 38h1v1h-1zM72 38h1v1h-1zM74 38h1v1h-1zM76 38h1v1h-1zM78 38h3v1h-3zM56 39h2v1h-2zM59 39h1v1h-1zM61 39h1v1h-1zM63 39h1v1h-1zM65 39h1v1h-1zM67 39h1v1h-1zM69 39h1v1h-1zM71 39h1v1h-1zM77 39h1v1h-1zM79 39h3v1h-3zM55 40h2v1h-2zM58 40h1v1h-1zM60 40h1v1h-1zM62 40h1v1h-1zM64 40h1v1h-1zM66 40h1v1h-1zM68 40h1v1h-1zM70 40h1v1h-1zM78 40h1v1h-1zM80 40h3v1h-3zM39 41h2v1h-2zM55 41h1v1h-1zM57 41h1v1h-1zM59 41h1v1h-1zM61 41h1v1h-1zM63 41h1v1h-1zM65 41h1v1h-1zM67 41h1v1h-1zM69 41h1v1h-1zM79 41h1v1h-1zM81 41h2v1h-2zM41 42h1v1h-1zM54 42h1v1h-1zM56 42h1v1h-1zM58 42h1v1h-1zM60 42h1v1h-1zM62 42h1v1h-1zM64 42h1v1h-1zM66 42h1v1h-1zM68 42h1v1h-1zM80 42h1v1h-1zM82 42h2v1h-2zM41 43h1v1h-1zM44 43h5v1h-5zM54 43h2v1h-2zM57 43h1v1h-1zM59 43h1v1h-1zM61 43h1v1h-1zM63 43h1v1h-1zM65 43h1v1h-1zM67 43h1v1h-1zM79 43h1v1h-1zM81 43h1v1h-1zM83 43h1v1h-1zM38 44h1v1h-1zM43 44h7v1h-7zM53 44h2v1h-2zM56 44h1v1h-1zM58 44h1v1h-1zM60 44h1v1h-1zM62 44h1v1h-1zM64 44h1v1h-1zM66 44h1v1h-1zM68 44h1v1h-1zM80 44h1v1h-1zM82 44h3v1h-3zM43 45h8v1h-8zM53 45h1v1h-1zM55 45h1v1h-1zM57 45h1v1h-1zM59 45h1v1h-1zM61 45h1v1h-1zM63 45h1v1h-1zM65 45h1v1h-1zM67 45h1v1h-1zM69 45h1v1h-1zM79 45h1v1h-1zM81 45h1v1h-1zM83 45h2v1h-2zM43 46h8v1h-8zM53 46h2v1h-2zM56 46h1v1h-1zM58 46h1v1h-1zM60 46h1v1h-1zM62 46h1v1h-1zM64 46h1v1h-1zM66 46h1v1h-1zM68 46h1v1h-1zM78 46h1v1h-1zM80 46h1v1h-1zM82 46h1v1h-1zM84 46h1v1h-1zM43 47h8v1h-8zM53 47h1v1h-1zM55 47h1v1h-1zM57 47h1v1h-1zM59 47h1v1h-1zM61 47h1v1h-1zM63 47h1v1h-1zM65 47h1v1h-1zM67 47h1v1h-1zM69 47h1v1h-1zM77 47h1v1h-1zM79 47h1v1h-1zM81 47h1v1h-1zM83 47h2v1h-2zM43 48h5v1h-5zM50 48h1v1h-1zM53 48h2v1h-2zM56 48h1v1h-1zM58 48h1v1h-1zM60 48h1v1h-1zM62 48h1v1h-1zM64 48h1v1h-1zM66 48h1v1h-1zM68 48h1v1h-1zM70 48h1v1h-1zM72 48h1v1h-1zM76 48h1v1h-1zM78 48h1v1h-1zM80 48h1v1h-1zM82 48h1v1h-1zM84 48h1v1h-1zM44 49h6v1h-6zM53 49h1v1h-1zM55 49h1v1h-1zM57 49h1v1h-1zM59 49h1v1h-1zM61 49h1v1h-1zM63 49h1v1h-1zM65 49h1v1h-1zM67 49h1v1h-1zM69 49h1v1h-1zM71 49h1v1h-1zM73 49h1v1h-1zM75 49h1v1h-1zM77 49h1v1h-1zM79 49h1v1h-1zM81 49h1v1h-1zM83 49h2v1h-2zM41 50h8v1h-8zM54 50h1v1h-1zM56 50h1v1h-1zM58 50h1v1h-1zM60 50h1v1h-1zM62 50h1v1h-1zM64 50h1v1h-1zM66 50h1v1h-1zM68 50h1v1h-1zM70 50h1v1h-1zM72 50h1v1h-1zM74 50h1v1h-1zM76 50h1v1h-1zM78 50h1v1h-1zM80 50h1v1h-1zM82 50h1v1h-1zM84 50h1v1h-1zM40 51h5v1h-5zM55 51h1v1h-1zM57 51h1v1h-1zM59 51h1v1h-1zM61 51h1v1h-1zM63 51h1v1h-1zM65 51h1v1h-1zM67 51h1v1h-1zM69 51h1v1h-1zM71 51h1v1h-1zM73 51h1v1h-1zM75 51h1v1h-1zM77 51h1v1h-1zM79 51h1v1h-1zM81 51h1v1h-1zM83 51h2v1h-2zM39 52h3v1h-3zM51 52h4v1h-4zM56 52h1v1h-1zM58 52h1v1h-1zM60 52h1v1h-1zM62 52h1v1h-1zM64 52h1v1h-1zM66 52h1v1h-1zM68 52h1v1h-1zM70 52h1v1h-1zM72 52h1v1h-1zM74 52h1v1h-1zM76 52h1v1h-1zM78 52h1v1h-1zM80 52h1v1h-1zM82 52h1v1h-1zM84 52h1v1h-1zM38 53h3v1h-3zM42 53h3v1h-3zM50 53h5v1h-5zM57 53h1v1h-1zM59 53h1v1h-1zM61 53h1v1h-1zM63 53h1v1h-1zM65 53h1v1h-1zM67 53h1v1h-1zM69 53h1v1h-1zM71 53h1v1h-1zM73 53h1v1h-1zM75 53h1v1h-1zM77 53h1v1h-1zM79 53h1v1h-1zM81 53h1v1h-1zM83 53h2v1h-2zM37 54h4v1h-4zM42 54h6v1h-6zM49 54h5v1h-5zM56 54h1v1h-1zM58 54h1v1h-1zM60 54h1v1h-1zM62 54h1v1h-1zM64 54h1v1h-1zM66 54h1v1h-1zM68 54h1v1h-1zM70 54h1v1h-1zM72 54h1v1h-1zM74 54h1v1h-1zM76 54h1v1h-1zM78 54h1v1h-1zM80 54h1v1h-1zM82 54h1v1h-1zM84 54h1v1h-1zM37 55h4v1h-4zM42 55h11v1h-11zM55 55h1v1h-1zM57 55h1v1h-1zM59 55h1v1h-1zM61 55h1v1h-1zM63 55h1v1h-1zM65 55h1v1h-1zM67 55h1v1h-1zM69 55h1v1h-1zM71 55h1v1h-1zM73 55h1v1h-1zM75 55h1v1h-1zM77 55h1v1h-1zM79 55h1v1h-1zM81 55h1v1h-1zM83 55h1v1h-1zM36 56h5v1h-5zM44 56h8v1h-8zM54 56h1v1h-1zM56 56h1v1h-1zM58 56h1v1h-1zM60 56h1v1h-1zM62 56h1v1h-1zM64 56h1v1h-1zM66 56h1v1h-1zM68 56h1v1h-1zM70 56h1v1h-1zM72 56h1v1h-1zM74 56h1v1h-1zM76 56h1v1h-1zM78 56h1v1h-1zM80 56h1v1h-1zM82 56h2v1h-2zM94 56h2v1h-2zM35 57h8v1h-8zM46 57h5v1h-5zM53 57h3v1h-3zM57 57h1v1h-1zM59 57h1v1h-1zM61 57h1v1h-1zM63 57h1v1h-1zM65 57h1v1h-1zM67 57h1v1h-1zM69 57h1v1h-1zM71 57h1v1h-1zM73 57h1v1h-1zM75 57h1v1h-1zM77 57h1v1h-1zM79 57h1v1h-1zM81 57h3v1h-3zM92 57h4v1h-4zM34 58h8v1h-8zM44 58h1v1h-1zM48 58h2v1h-2zM52 58h5v1h-5zM58 58h1v1h-1zM60 58h1v1h-1zM62 58h1v1h-1zM64 58h1v1h-1zM66 58h1v1h-1zM68 58h1v1h-1zM70 58h1v1h-1zM72 58h1v1h-1zM74 58h1v1h-1zM76 58h1v1h-1zM78 58h1v1h-1zM80 58h1v1h-1zM82 58h1v1h-1zM90 58h5v1h-5zM34 59h8v1h-8zM44 59h4v1h-4zM51 59h4v1h-4zM56 59h2v1h-2zM59 59h1v1h-1zM61 59h1v1h-1zM63 59h1v1h-1zM65 59h1v1h-1zM67 59h1v1h-1zM69 59h1v1h-1zM71 59h1v1h-1zM73 59h1v1h-1zM75 59h1v1h-1zM77 59h1v1h-1zM79 59h1v1h-1zM81 59h1v1h-1zM88 59h3v1h-3zM33 60h21v1h-21zM56 60h3v1h-3zM60 60h1v1h-1zM62 60h1v1h-1zM64 60h1v1h-1zM66 60h1v1h-1zM68 60h1v1h-1zM70 60h1v1h-1zM72 60h1v1h-1zM74 60h1v1h-1zM76 60h1v1h-1zM78 60h1v1h-1zM80 60h2v1h-2zM86 60h3v1h-3zM92 60h1v1h-1zM32 61h11v1h-11zM44 61h2v1h-2zM47 61h4v1h-4zM57 61h3v1h-3zM61 61h1v1h-1zM63 61h1v1h-1zM65 61h1v1h-1zM67 61h1v1h-1zM69 61h1v1h-1zM71 61h1v1h-1zM73 61h1v1h-1zM75 61h1v1h-1zM77 61h1v1h-1zM79 61h2v1h-2zM83 61h4v1h-4zM32 62h10v1h-10zM44 62h2v1h-2zM58 62h3v1h-3zM62 62h1v1h-1zM64 62h1v1h-1zM66 62h1v1h-1zM68 62h1v1h-1zM70 62h1v1h-1zM72 62h1v1h-1zM74 62h1v1h-1zM76 62h1v1h-1zM78 62h2v1h-2zM81 62h4v1h-4zM86 62h1v1h-1zM90 62h1v1h-1zM94 62h1v1h-1zM31 63h11v1h-11zM44 63h2v1h-2zM60 63h2v1h-2zM63 63h1v1h-1zM65 63h1v1h-1zM67 63h1v1h-1zM69 63h1v1h-1zM71 63h1v1h-1zM73 63h1v1h-1zM75 63h3v1h-3zM79 63h4v1h-4zM30 64h11v1h-11zM45 64h1v1h-1zM62 64h3v1h-3zM66 64h1v1h-1zM68 64h1v1h-1zM70 64h1v1h-1zM72 64h1v1h-1zM74 64h2v1h-2zM77 64h4v1h-4zM84 64h1v1h-1zM88 64h1v1h-1zM92 64h1v1h-1zM29 65h11v1h-11zM64 65h14v1h-14zM95 65h1v1h-1zM28 66h4v1h-4zM72 66h4v1h-4zM78 66h1v1h-1zM82 66h1v1h-1zM86 66h1v1h-1zM90 66h1v1h-1zM94 66h1v1h-1zM28 67h4v1h-4zM33 67h5v1h-5zM70 67h4v1h-4zM93 67h1v1h-1zM27 68h4v1h-4zM32 68h10v1h-10zM68 68h3v1h-3zM72 68h1v1h-1zM76 68h1v1h-1zM80 68h1v1h-1zM84 68h1v1h-1zM88 68h1v1h-1zM92 68h1v1h-1zM26 69h5v1h-5zM32 69h12v1h-12zM66 69h3v1h-3zM87 69h1v1h-1zM91 69h1v1h-1zM95 69h1v1h-1zM26 70h5v1h-5zM33 70h12v1h-12zM63 70h4v1h-4zM70 70h1v1h-1zM74 70h1v1h-1zM78 70h1v1h-1zM82 70h1v1h-1zM86 70h1v1h-1zM90 70h1v1h-1zM94 70h1v1h-1zM27 71h5v1h-5zM34 71h11v1h-11zM61 71h4v1h-4zM81 71h1v1h-1zM85 71h1v1h-1zM89 71h1v1h-1zM93 71h1v1h-1zM27 72h6v1h-6zM37 72h8v1h-8zM59 72h4v1h-4zM64 72h1v1h-1zM68 72h1v1h-1zM72 72h1v1h-1zM76 72h1v1h-1zM80 72h1v1h-1zM84 72h1v1h-1zM88 72h1v1h-1zM92 72h1v1h-1zM26 73h6v1h-6zM40 73h5v1h-5zM57 73h3v1h-3zM79 73h1v1h-1zM83 73h1v1h-1zM87 73h1v1h-1zM91 73h1v1h-1zM95 73h1v1h-1zM26 74h5v1h-5zM40 74h6v1h-6zM54 74h5v1h-5zM62 74h1v1h-1zM66 74h1v1h-1zM70 74h1v1h-1zM74 74h1v1h-1zM78 74h1v1h-1zM82 74h1v1h-1zM86 74h1v1h-1zM90 74h1v1h-1zM94 74h1v1h-1zM25 75h6v1h-6zM39 75h7v1h-7zM52 75h4v1h-4zM73 75h1v1h-1zM77 75h1v1h-1zM81 75h1v1h-1zM85 75h1v1h-1zM89 75h1v1h-1zM93 75h1v1h-1zM25 76h5v1h-5zM39 76h7v1h-7zM50 76h4v1h-4zM56 76h1v1h-1zM60 76h1v1h-1zM64 76h1v1h-1zM68 76h1v1h-1zM72 76h1v1h-1zM76 76h1v1h-1zM80 76h1v1h-1zM84 76h1v1h-1zM88 76h1v1h-1zM92 76h1v1h-1zM24 77h6v1h-6zM38 77h7v1h-7zM48 77h3v1h-3zM71 77h1v1h-1zM75 77h1v1h-1zM79 77h1v1h-1zM83 77h1v1h-1zM87 77h1v1h-1zM91 77h1v1h-1zM95 77h1v1h-1zM23 78h6v1h-6zM39 78h4v1h-4zM46 78h3v1h-3zM50 78h1v1h-1zM54 78h1v1h-1zM58 78h1v1h-1zM62 78h1v1h-1zM66 78h1v1h-1zM70 78h1v1h-1zM74 78h1v1h-1zM78 78h1v1h-1zM82 78h1v1h-1zM86 78h1v1h-1zM90 78h1v1h-1zM94 78h1v1h-1zM23 79h5v1h-5zM39 79h8v1h-8zM65 79h1v1h-1zM69 79h1v1h-1zM73 79h1v1h-1zM77 79h1v1h-1zM81 79h1v1h-1zM85 79h1v1h-1zM89 79h1v1h-1zM93 79h1v1h-1zM22 80h6v1h-6zM41 80h4v1h-4zM48 80h1v1h-1zM52 80h1v1h-1zM56 80h1v1h-1zM60 80h1v1h-1zM64 80h1v1h-1zM68 80h1v1h-1zM72 80h1v1h-1zM76 80h1v1h-1zM80 80h1v1h-1zM84 80h1v1h-1zM88 80h1v1h-1zM92 80h1v1h-1zM21 81h6v1h-6zM39 81h4v1h-4zM59 81h1v1h-1zM63 81h1v1h-1zM67 81h1v1h-1zM71 81h1v1h-1zM75 81h1v1h-1zM79 81h1v1h-1zM83 81h1v1h-1zM87 81h1v1h-1zM91 81h1v1h-1zM95 81h1v1h-1zM21 82h6v1h-6zM37 82h3v1h-3zM42 82h1v1h-1zM46 82h1v1h-1zM50 82h1v1h-1zM54 82h1v1h-1zM58 82h1v1h-1zM62 82h1v1h-1zM66 82h1v1h-1zM70 82h1v1h-1zM74 82h1v1h-1zM78 82h1v1h-1zM82 82h1v1h-1zM86 82h1v1h-1zM90 82h1v1h-1zM94 82h1v1h-1zM20 83h6v1h-6zM34 83h4v1h-4zM57 83h1v1h-1zM61 83h1v1h-1zM65 83h1v1h-1zM69 83h1v1h-1zM73 83h1v1h-1zM77 83h1v1h-1zM81 83h1v1h-1zM85 83h1v1h-1zM89 83h1v1h-1zM93 83h1v1h-1zM8 84h4v1h-4zM20 84h5v1h-5zM32 84h5v1h-5zM40 84h1v1h-1zM44 84h1v1h-1zM48 84h1v1h-1zM52 84h1v1h-1zM56 84h1v1h-1zM60 84h1v1h-1zM64 84h1v1h-1zM68 84h1v1h-1zM72 84h1v1h-1zM76 84h1v1h-1zM80 84h1v1h-1zM84 84h1v1h-1zM88 84h1v1h-1zM92 84h1v1h-1zM8 85h4v1h-4zM19 85h7v1h-7zM30 85h4v1h-4zM51 85h1v1h-1zM55 85h1v1h-1zM59 85h1v1h-1zM63 85h1v1h-1zM67 85h1v1h-1zM71 85h1v1h-1zM75 85h1v1h-1zM79 85h1v1h-1zM83 85h1v1h-1zM87 85h1v1h-1zM91 85h1v1h-1zM95 85h1v1h-1zM4 86h11v1h-11zM18 86h8v1h-8zM28 86h3v1h-3zM34 86h1v1h-1zM38 86h1v1h-1zM42 86h1v1h-1zM46 86h1v1h-1zM50 86h1v1h-1zM54 86h1v1h-1zM58 86h1v1h-1zM62 86h1v1h-1zM66 86h1v1h-1zM70 86h1v1h-1zM74 86h1v1h-1zM78 86h1v1h-1zM82 86h1v1h-1zM86 86h1v1h-1zM90 86h1v1h-1zM94 86h1v1h-1zM4 87h11v1h-11zM18 87h6v1h-6zM26 87h3v1h-3zM49 87h1v1h-1zM53 87h1v1h-1zM57 87h1v1h-1zM61 87h1v1h-1zM65 87h1v1h-1zM69 87h1v1h-1zM73 87h1v1h-1zM77 87h1v1h-1zM81 87h1v1h-1zM85 87h1v1h-1zM89 87h1v1h-1zM93 87h1v1h-1zM4 88h11v1h-11zM18 88h4v1h-4zM23 88h4v1h-4zM28 88h1v1h-1zM32 88h1v1h-1zM36 88h1v1h-1zM40 88h1v1h-1zM44 88h1v1h-1zM48 88h1v1h-1zM52 88h1v1h-1zM56 88h1v1h-1zM60 88h1v1h-1zM64 88h1v1h-1zM68 88h1v1h-1zM72 88h1v1h-1zM76 88h1v1h-1zM80 88h1v1h-1zM84 88h1v1h-1zM88 88h1v1h-1zM92 88h1v1h-1zM4 89h4v1h-4zM12 89h3v1h-3zM21 89h4v1h-4zM43 89h1v1h-1zM47 89h1v1h-1zM51 89h1v1h-1zM55 89h1v1h-1zM59 89h1v1h-1zM63 89h1v1h-1zM67 89h1v1h-1zM71 89h1v1h-1zM75 89h1v1h-1zM79 89h1v1h-1zM83 89h1v1h-1zM87 89h1v1h-1zM91 89h1v1h-1zM95 89h1v1h-1zM4 90h11v1h-11zM19 90h4v1h-4zM26 90h1v1h-1zM30 90h1v1h-1zM34 90h1v1h-1zM38 90h1v1h-1zM42 90h1v1h-1zM46 90h1v1h-1zM50 90h1v1h-1zM54 90h1v1h-1zM58 90h1v1h-1zM62 90h1v1h-1zM66 90h1v1h-1zM70 90h1v1h-1zM74 90h1v1h-1zM78 90h1v1h-1zM82 90h1v1h-1zM86 90h1v1h-1zM90 90h1v1h-1zM94 90h1v1h-1zM4 91h11v1h-11zM17 91h3v1h-3zM37 91h1v1h-1zM41 91h1v1h-1zM45 91h1v1h-1zM49 91h1v1h-1zM53 91h1v1h-1zM57 91h1v1h-1zM61 91h1v1h-1zM65 91h1v1h-1zM69 91h1v1h-1zM73 91h1v1h-1zM77 91h1v1h-1zM81 91h1v1h-1zM85 91h1v1h-1zM89 91h1v1h-1zM93 91h1v1h-1zM4 92h14v1h-14zM20 92h1v1h-1zM24 92h1v1h-1zM28 92h1v1h-1zM32 92h1v1h-1zM36 92h1v1h-1zM40 92h1v1h-1zM44 92h1v1h-1zM48 92h1v1h-1zM52 92h1v1h-1zM56 92h1v1h-1zM60 92h1v1h-1zM64 92h1v1h-1zM68 92h1v1h-1zM72 92h1v1h-1zM76 92h1v1h-1zM80 92h1v1h-1zM84 92h1v1h-1zM88 92h1v1h-1zM92 92h1v1h-1zM4 93h12v1h-12zM35 93h1v1h-1zM39 93h1v1h-1zM43 93h1v1h-1zM47 93h1v1h-1zM51 93h1v1h-1zM55 93h1v1h-1zM59 93h1v1h-1zM63 93h1v1h-1zM67 93h1v1h-1zM71 93h1v1h-1zM75 93h1v1h-1zM79 93h1v1h-1zM83 93h1v1h-1zM87 93h1v1h-1zM91 93h1v1h-1zM95 93h1v1h-1zM10 94h5v1h-5zM18 94h1v1h-1zM22 94h1v1h-1zM26 94h1v1h-1zM30 94h1v1h-1zM34 94h1v1h-1zM38 94h1v1h-1zM42 94h1v1h-1zM46 94h1v1h-1zM50 94h1v1h-1zM54 94h1v1h-1zM58 94h1v1h-1zM62 94h1v1h-1zM66 94h1v1h-1zM70 94h1v1h-1zM74 94h1v1h-1zM78 94h1v1h-1zM82 94h1v1h-1zM86 94h1v1h-1zM90 94h1v1h-1zM94 94h1v1h-1zM8 95h3v1h-3zM29 95h1v1h-1zM33 95h1v1h-1zM37 95h1v1h-1zM41 95h1v1h-1zM45 95h1v1h-1zM49 95h1v1h-1zM53 95h1v1h-1zM57 95h1v1h-1zM61 95h1v1h-1zM65 95h1v1h-1zM69 95h1v1h-1zM73 95h1v1h-1zM77 95h1v1h-1zM81 95h1v1h-1zM85 95h1v1h-1zM89 95h1v1h-1zM93 95h1v1h-1zM6 96h3v1h-3zM12 96h1v1h-1zM16 96h1v1h-1zM20 96h1v1h-1zM24 96h1v1h-1zM28 96h1v1h-1zM32 96h1v1h-1zM36 96h1v1h-1zM40 96h1v1h-1zM44 96h1v1h-1zM48 96h1v1h-1zM52 96h1v1h-1zM56 96h1v1h-1zM60 96h1v1h-1zM64 96h1v1h-1zM68 96h1v1h-1zM72 96h1v1h-1zM76 96h1v1h-1zM80 96h1v1h-1zM84 96h1v1h-1zM88 96h1v1h-1zM92 96h1v1h-1zM3 97h4v1h-4zM23 97h1v1h-1zM27 97h1v1h-1zM31 97h1v1h-1zM35 97h1v1h-1zM39 97h1v1h-1zM43 97h1v1h-1zM47 97h1v1h-1zM51 97h1v1h-1zM55 97h1v1h-1zM59 97h1v1h-1zM63 97h1v1h-1zM67 97h1v1h-1zM71 97h1v1h-1zM75 97h1v1h-1zM79 97h1v1h-1zM83 97h1v1h-1zM87 97h1v1h-1zM91 97h1v1h-1zM95 97h1v1h-1zM1 98h4v1h-4zM6 98h1v1h-1zM10 98h1v1h-1zM14 98h1v1h-1zM18 98h1v1h-1zM22 98h1v1h-1zM26 98h1v1h-1zM30 98h1v1h-1zM34 98h1v1h-1zM38 98h1v1h-1zM42 98h1v1h-1zM46 98h1v1h-1zM50 98h1v1h-1zM54 98h1v1h-1zM58 98h1v1h-1zM62 98h1v1h-1zM66 98h1v1h-1zM70 98h1v1h-1zM74 98h1v1h-1zM78 98h1v1h-1zM82 98h1v1h-1zM86 98h1v1h-1zM90 98h1v1h-1zM94 98h1v1h-1zM0 99h3v1h-3zM21 99h1v1h-1zM25 99h1v1h-1zM29 99h1v1h-1zM33 99h1v1h-1zM37 99h1v1h-1zM41 99h1v1h-1zM45 99h1v1h-1zM49 99h1v1h-1zM53 99h1v1h-1zM57 99h1v1h-1zM61 99h1v1h-1zM65 99h1v1h-1zM69 99h1v1h-1zM73 99h1v1h-1zM77 99h1v1h-1zM81 99h1v1h-1zM85 99h1v1h-1zM89 99h1v1h-1zM93 99h1v1h-1zM0 100h1v1h-1zM4 100h1v1h-1zM8 100h1v1h-1zM12 100h1v1h-1zM16 100h1v1h-1zM20 100h1v1h-1zM24 100h1v1h-1zM28 100h1v1h-1zM32 100h1v1h-1zM36 100h1v1h-1zM40 100h1v1h-1zM44 100h1v1h-1zM48 100h1v1h-1zM52 100h1v1h-1zM56 100h1v1h-1zM60 100h1v1h-1zM64 100h1v1h-1zM68 100h1v1h-1zM72 100h1v1h-1zM76 100h1v1h-1zM80 100h1v1h-1zM84 100h1v1h-1zM88 100h1v1h-1zM92 100h1v1h-1zM15 101h1v1h-1zM19 101h1v1h-1zM23 101h1v1h-1zM27 101h1v1h-1zM31 101h1v1h-1zM35 101h1v1h-1zM39 101h1v1h-1zM43 101h1v1h-1zM47 101h1v1h-1zM51 101h1v1h-1zM55 101h1v1h-1zM59 101h1v1h-1zM63 101h1v1h-1zM67 101h1v1h-1zM71 101h1v1h-1zM75 101h1v1h-1zM79 101h1v1h-1zM83 101h1v1h-1zM87 101h1v1h-1zM91 101h1v1h-1zM95 101h1v1h-1zM2 102h1v1h-1zM6 102h1v1h-1zM10 102h1v1h-1zM14 102h1v1h-1zM18 102h1v1h-1zM22 102h1v1h-1zM26 102h1v1h-1zM30 102h1v1h-1zM34 102h1v1h-1zM38 102h1v1h-1zM42 102h1v1h-1zM46 102h1v1h-1zM50 102h1v1h-1zM54 102h1v1h-1zM58 102h1v1h-1zM62 102h1v1h-1zM66 102h1v1h-1zM70 102h1v1h-1zM74 102h1v1h-1zM78 102h1v1h-1zM82 102h1v1h-1zM86 102h1v1h-1zM90 102h1v1h-1zM94 102h1v1h-1zM13 103h1v1h-1zM17 103h1v1h-1zM21 103h1v1h-1zM25 103h1v1h-1zM29 103h1v1h-1zM33 103h1v1h-1zM37 103h1v1h-1zM41 103h1v1h-1zM45 103h1v1h-1zM49 103h1v1h-1zM53 103h1v1h-1zM57 103h1v1h-1zM61 103h1v1h-1zM65 103h1v1h-1zM69 103h1v1h-1zM73 103h1v1h-1zM77 103h1v1h-1zM81 103h1v1h-1zM85 103h1v1h-1zM89 103h1v1h-1zM93 103h1v1h-1zM0 104h1v1h-1zM4 104h1v1h-1zM8 104h1v1h-1zM12 104h1v1h-1zM16 104h1v1h-1zM20 104h1v1h-1zM24 104h1v1h-1zM28 104h1v1h-1zM32 104h1v1h-1zM36 104h1v1h-1zM40 104h1v1h-1zM44 104h1v1h-1zM48 104h1v1h-1zM52 104h1v1h-1zM56 104h1v1h-1zM60 104h1v1h-1zM64 104h1v1h-1zM68 104h1v1h-1zM72 104h1v1h-1zM76 104h1v1h-1zM80 104h1v1h-1zM84 104h1v1h-1zM88 104h1v1h-1zM92 104h1v1h-1zM7 105h1v1h-1zM11 105h1v1h-1zM15 105h1v1h-1zM19 105h1v1h-1zM23 105h1v1h-1zM27 105h1v1h-1zM31 105h1v1h-1zM35 105h1v1h-1zM39 105h1v1h-1zM43 105h1v1h-1zM47 105h1v1h-1zM51 105h1v1h-1zM55 105h1v1h-1zM59 105h1v1h-1zM63 105h1v1h-1zM67 105h1v1h-1zM71 105h1v1h-1zM75 105h1v1h-1zM79 105h1v1h-1zM83 105h1v1h-1zM87 105h1v1h-1zM91 105h1v1h-1zM95 105h1v1h-1zM2 106h1v1h-1zM6 106h1v1h-1zM10 106h1v1h-1zM14 106h1v1h-1zM18 106h1v1h-1zM22 106h1v1h-1zM26 106h1v1h-1zM30 106h1v1h-1zM34 106h1v1h-1zM38 106h1v1h-1zM42 106h1v1h-1zM46 106h1v1h-1zM50 106h1v1h-1zM54 106h1v1h-1zM58 106h1v1h-1zM62 106h1v1h-1zM66 106h1v1h-1zM70 106h1v1h-1zM74 106h1v1h-1zM78 106h1v1h-1zM82 106h1v1h-1zM86 106h1v1h-1zM90 106h1v1h-1zM94 106h1v1h-1zM1 107h1v1h-1zM5 107h1v1h-1zM9 107h1v1h-1zM13 107h1v1h-1zM17 107h1v1h-1zM21 107h1v1h-1zM25 107h1v1h-1zM29 107h1v1h-1zM33 107h1v1h-1zM37 107h1v1h-1zM41 107h1v1h-1zM45 107h1v1h-1zM49 107h1v1h-1zM53 107h1v1h-1zM57 107h1v1h-1zM61 107h1v1h-1zM65 107h1v1h-1zM69 107h1v1h-1zM73 107h1v1h-1zM77 107h1v1h-1zM81 107h1v1h-1zM85 107h1v1h-1zM89 107h1v1h-1zM93 107h1v1h-1z"/></svg><span class="tarot-name">Der engagierte Arbeitnehmer</span></span></span></button>
+    </div>
+    <div class="tarot-reading" aria-live="polite">
+      <p class="tarot-text"></p>
+      <div class="intro-actions tarot-actions" hidden>
+        <button class="cta intro-btn" type="button" data-intro="enter">Weiter zum Portfolio →</button>
+        <button class="textlink intro-again" type="button" data-intro="redraw">Nochmal ziehen</button>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+
+<a class="skip" href="#main">Zum Inhalt springen</a>
+
+<!-- ===== HEADER ===== -->
+<header>
+  <a class="brand" href="#top">Marius Rüppel</a>
+  <nav>
+    <a href="#work">Arbeiten</a>
+    <a href="#cv">Werdegang</a>
+    <a href="#contact">Kontakt</a>
+  </nav>
+</header>
+
+<main id="main" tabindex="-1">
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <h1 class="reveal">Social Media, das <em>Menschen</em> erreicht.</h1>
+  <div class="hero-row">
+    <p class="hero-lead reveal">Ich bin Marius Rüppel, Social Media &amp; Digital Content Manager. Seit 2021 betreue ich Kanäle für Medien, Initiativen und Agenturen — von der ersten Content-Idee über Community-Management bis zur Ads-Kampagne.</p>
+    <div class="hero-actions reveal">
+      <a class="cta" href="#work">Arbeiten ansehen ↓</a>
+      <a class="textlink" href="mailto:rueppelmarius@gmail.com">oder schreib mir</a>
+    </div>
+  </div>
+
+  <!-- ===== ANIMIERTES ASCII-PFERD ===== -->
+  <!-- Die Frames stehen in horse-frames.js (window.HORSE_FRAMES).
+       Eigenes Video umwandeln? -> python video_to_ascii.py mein-video.mp4 -->
+  <div class="ascii-slot reveal">
+    <pre class="ascii" id="horse" role="img" aria-label="Galoppierendes Pferd aus Schriftzeichen, animiert"></pre>
+  </div>
+</section>
+
+<!-- ===== ARBEITEN ===== -->
+<section class="cases" id="work">
+  <div class="sec-head"><h2 class="label">Ausgewählte Arbeiten</h2></div>
+
+  <article class="case reveal" id="case-wdf">
+    <div class="case-meta">
+      <span class="code">2024–2025</span>
+      <h3>Welt der Frauen</h3>
+      <span class="role">Relaunch des Instagram-Auftritts · österreichisches Magazin</span>
+    </div>
+    <div class="case-body">
+      <p>Ich habe den inhaltlichen und optischen Relaunch des Instagram-Accounts betreut. Die vorher etwas bieder wirkende Marke hat jetzt einen jungen Social-Media-Auftritt: Geschichten werden nicht mehr 1:1 aus dem Print übernommen, sondern für Social Media aufbereitet.</p>
+      <p><b>Ergebnis:</b> Die vorher sterile Seite ist ein lebendiger Ort, an dem sich Menschen in den Kommentaren rege austauschen.</p>
+      <p><b>Größte Challenge:</b> Bei einem Printmedium gibt es interne Stakeholder*innen, die Social Media skeptisch gegenüberstehen. Die galt es mit durchdachten Konzepten zu überzeugen.</p>
+      <p class="tags">Digitalisierung · Social-Media-Management · Content Creation</p>
+    </div>
+  </article>
+
+  <article class="case reveal" id="case-andererseits">
+    <div class="case-meta">
+      <span class="code">2023</span>
+      <h3>andererseits</h3>
+      <span class="role">Social Media Manager (Freelance) · inklusives Medium</span>
+      <span class="stat">200.000+</span>
+      <span class="stat-label">erreichte Menschen mit einer Kampagne</span>
+    </div>
+    <div class="case-body">
+      <p>Bei andererseits.org habe ich die Social-Media-Kanäle betreut, Content kreiert, Community-Management betrieben und Kampagnen über Meta Ads umgesetzt. Die CI habe ich vereinheitlicht und die Beiträge barrierefrei gestaltet: auf Kontraste achten, ALT-Texte schreiben, in einfacher Sprache schreiben.</p>
+      <p><b>Lieblingsprojekt:</b> Zum Release der Doku „Rette sich wer kann“ über Menschen mit Behinderungen, die Opfer der Flut im Ahrtal wurden, haben wir eine Awareness-Kampagne mit Multiplikator*innen aus Politik und Medien umgesetzt. Mit Testimonials und Behind-the-Scenes-Material haben wir über 200.000 Menschen erreicht.</p>
+      <p><b>Ergebnis:</b> 30 % mehr Follower*innen auf Instagram — und Inhalte, die für mehr Menschen zugänglich sind.</p>
+      <p class="links">Beispiele:
+        <a href="https://www.instagram.com/p/Cuzg4rzsaDj/" target="_blank" rel="noopener" aria-label="andererseits: Post auf Instagram (öffnet in neuem Tab)">Post</a> ·
+        <a href="https://www.instagram.com/reel/CutO0FxIuSK/" target="_blank" rel="noopener" aria-label="andererseits: Reel 1 auf Instagram (öffnet in neuem Tab)">Reel 1</a> ·
+        <a href="https://www.instagram.com/reel/Cu8oM5etMKz/" target="_blank" rel="noopener" aria-label="andererseits: Reel 2 auf Instagram (öffnet in neuem Tab)">Reel 2</a></p>
+      <p class="tags">Community-Management · Social-Media-Management · Ads</p>
+    </div>
+  </article>
+
+  <article class="case reveal" id="case-rsi">
+    <div class="case-meta">
+      <span class="code">2021–2022</span>
+      <h3>Riccardo Simonetti Initiative</h3>
+      <span class="role">Social Media Manager (Freelance)</span>
+      <span class="stat">+50 %</span>
+      <span class="stat-label">Follower*innen auf Instagram</span>
+    </div>
+    <div class="case-body">
+      <p>Für die Instagram-Seite der Initiative habe ich Content geplant und erstellt, Community-Management betrieben, kleine Projekte geleitet und eine einheitliche CI für den Account entwickelt. Statt langweiliger Sharepics gab es Einblicke in queere Geschichte.</p>
+      <p><b>Ergebnis:</b> Durch aktives Community-Management wurde der Kommentarbereich zum Safer Space für queere Menschen.</p>
+      <p><b>Lieblingsprojekt:</b> Gemeinsam mit der Illustratorin Christine Lohmann habe ich die zwanzigseitige Aufklärungsbroschüre „Wer bin ich?“ entworfen und getextet. Heute liegt sie in Bildungseinrichtungen in ganz Deutschland aus.</p>
+      <p class="links">Beispiele:
+        <a href="https://www.instagram.com/p/CbLJ9saMubP/" target="_blank" rel="noopener" aria-label="Riccardo Simonetti Initiative: Post 1 auf Instagram (öffnet in neuem Tab)">Post 1</a> ·
+        <a href="https://www.instagram.com/p/CeRU-2TM6GT/" target="_blank" rel="noopener" aria-label="Riccardo Simonetti Initiative: Post 2 auf Instagram (öffnet in neuem Tab)">Post 2</a></p>
+      <p class="tags">Community-Management · Social-Media-Management · Content Creation</p>
+    </div>
+  </article>
+
+  <article class="case reveal" id="case-visionistas">
+    <div class="case-meta">
+      <span class="code">seit 2026</span>
+      <h3>Visionistas</h3>
+      <span class="role">Digital Content Manager · Agentur für soziale Verantwortung</span>
+    </div>
+    <div class="case-body">
+      <p>Ich betreue mehrere Projekte: Beratung von Kund*innen in Sachen Social Media und Ads, dazu Konzeption und Umsetzung von Kampagnen.</p>
+      <p><b>Größter Erfolg:</b> Ich habe die Beratung zum Launch einer Dating- und Kennenlern-App für Menschen mit Behinderungen geleitet. Mit Social-Media-Management und Ads konnten wir Verbindungen zwischen Menschen schaffen.</p>
+      <p><b>Größte Challenge:</b> Im Agenturalltag haben Kund*innen mal mehr, mal weniger Vorwissen im Bereich Social Media. Umso besser fühlt es sich an, wenn die Überzeugungsarbeit gelingt.</p>
+      <p class="tags">Consulting · Social-Media-Management · Content Creation</p>
+    </div>
+  </article>
+
+  <div class="sec-head mentions-head"><h3 class="label">Außerdem Content &amp; Community für</h3></div>
+  <div class="work-grid">
+    <div class="project reveal">
+      <span class="code">ZDF</span><div class="spacer"></div>
+      <span class="client">Drive Beta / ZDFmediathek</span>
+      <span class="ptitle">Social-Media-Redaktion</span>
+    </div>
+    <div class="project reveal">
+      <span class="code">TikTok</span><div class="spacer"></div>
+      <span class="client">Hashtag.jetzt</span>
+      <span class="ptitle">TikTok-Videos</span>
+    </div>
+    <div class="project reveal">
+      <span class="code">Content</span><div class="spacer"></div>
+      <span class="client">Somaya</span>
+      <span class="ptitle">Content &amp; Community</span>
+    </div>
+    <div class="project reveal">
+      <span class="code">Content</span><div class="spacer"></div>
+      <span class="client">SicherLeben</span>
+      <span class="ptitle">Content &amp; Community</span>
+    </div>
+    <div class="project reveal">
+      <span class="code">Content</span><div class="spacer"></div>
+      <span class="client">lenibolt</span>
+      <span class="ptitle">Content &amp; Community</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== WAS ICH MITBRINGE ===== -->
+<section class="services" id="skills">
+  <div class="sec-head"><h2 class="label">Was ich mitbringe</h2></div>
+
+  <div class="svc reveal">
+    <div>
+      <h3>Social-Media-Management</h3>
+      <p>Strategie, Redaktionsplanung und ein Auftritt, der zur Marke passt — inklusive einheitlicher CI für den Account.</p>
+    </div>
+  </div>
+  <div class="svc reveal">
+    <div>
+      <h3>Content Creation</h3>
+      <p>Posts, Reels und TikToks, die für Social Media gedacht sind — nicht 1:1 aus dem Print übernommen. Barrierefrei mit Kontrasten, ALT-Texten und einfacher Sprache.</p>
+    </div>
+  </div>
+  <div class="svc reveal">
+    <div>
+      <h3>Community-Management</h3>
+      <p>Kommentarspalten, in denen sich Menschen austauschen wollen — und sich sicher fühlen.</p>
+    </div>
+  </div>
+  <div class="svc reveal">
+    <div>
+      <h3>Kampagnen &amp; Ads</h3>
+      <p>Kampagnenplanung und -umsetzung mit Meta und Google Ads, gemeinsam mit Multiplikator*innen aus Politik und Medien.</p>
+    </div>
+  </div>
+  <div class="svc reveal">
+    <div>
+      <h3>Consulting</h3>
+      <p>Beratung für Kund*innen mit viel oder wenig Social-Media-Vorwissen — ehrlich, konkret und mit Konzepten, die auch Skeptiker*innen überzeugen.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== WERDEGANG ===== -->
+<section class="cv" id="cv">
+  <div class="sec-head"><h2 class="label">Werdegang</h2></div>
+  <ol class="cv-list">
+    <li class="reveal"><span class="when">01/2026 – heute</span><span class="what"><b>Visionistas</b> Digital Content Manager<small>Consulting, Kampagnenplanung, Meta und Google Ads</small></span></li>
+    <li class="reveal"><span class="when">02/2024 – 12/2025</span><span class="what"><b>DonorMedia GmbH</b> Social Media Manager<small>Content Creation, Kampagnenplanung, Ads</small></span></li>
+    <li class="reveal"><span class="when">02/2023 – 11/2023</span><span class="what"><b>andererseits.org</b> Social Media Manager (Freelance)<small>Social-Media-Strategie, Content Creation, Community-Management</small></span></li>
+    <li class="reveal"><span class="when">07/2022 – 09/2022</span><span class="what"><b>Drive Beta / ZDFmediathek</b> Social-Media-Redakteur (Praktikum)<small>Konzeption von Social-Media-Content, Community-Management</small></span></li>
+    <li class="reveal"><span class="when">11/2021 – 08/2022</span><span class="what"><b>Hashtag.jetzt</b> Social Media Manager (Praktikum)<small>Produktion von TikTok-Videos</small></span></li>
+    <li class="reveal"><span class="when">08/2021 – 11/2022</span><span class="what"><b>Riccardo Simonetti Initiative</b> Social Media Manager (Freelance)<small>Betreuung der Instagram-Seite</small></span></li>
+    <li class="reveal"><span class="when">10/2019 – 05/2023</span><span class="what"><b>FH Wien der WKW</b> Bachelor Journalismus und Medienmanagement</span></li>
+  </ol>
+
+  <div class="skills">
+    <div class="reveal">
+      <h3 class="label">Tools</h3>
+      <p>Meta Business Suite · Google Ads · Google Analytics · Adobe Creative Cloud · Figma · Canva · Python</p>
+    </div>
+    <div class="reveal">
+      <h3 class="label">Sprachen</h3>
+      <p>Deutsch (Muttersprache) · Chinesisch (HSK 4) · Spanisch (B1) · Italienisch (B1)</p>
+    </div>
+    <div class="reveal">
+      <h3 class="label">Interessen</h3>
+      <p>Töpfern · Sprachen lernen · Internetkultur</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== KONTAKT ===== -->
+<section class="bigcta" id="contact">
+  <span class="label">Fragen, Projekte, Jobs?</span>
+  <a class="h" href="mailto:rueppelmarius@gmail.com">Sag&nbsp;Hallo</a>
+  <p class="mail"><a href="mailto:rueppelmarius@gmail.com">rueppelmarius@gmail.com</a></p>
+</section>
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="foot-top">
+    <div class="foot-brand">Marius Rüppel</div>
+    <div class="foot-links">
+      <div class="foot-col">
+        <span class="label">Kontakt</span>
+        <a href="mailto:rueppelmarius@gmail.com">E-Mail</a>
+      </div>
+      <div class="foot-col">
+        <span class="label">Seite</span>
+        <a href="#work">Arbeiten</a>
+            <a href="#cv">Werdegang</a>
+      </div>
+      <div class="foot-col">
+        <span class="label">Ortszeit</span>
+        <span class="clock" id="clock">--:--:--</span>
+      </div>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <span>© 2026 Marius Rüppel</span>
+    <span>rueppelmarius@gmail.com</span>
+    <!-- TODO vor dem Livegang: Impressum & Datenschutz als eigene Seiten anlegen und hier verlinken -->
+  </div>
+</footer>
+
+<script src="horse-frames.js"></script>
+<script>
+  // reveal on scroll
+  const io = new IntersectionObserver((es)=>{
+    es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold:0.12 });
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  // live clock (local time)
+  const clock = document.getElementById('clock');
+  function tick(){
+    const d = new Date();
+    const p = n => String(n).padStart(2,'0');
+    clock.textContent = p(d.getHours())+':'+p(d.getMinutes())+':'+p(d.getSeconds());
+  }
+  tick(); setInterval(tick, 1000);
+
+  // Intro: Ja -> Portfolio, Nein -> Münzwurf (landet immer auf Ja)
+  (function(){
+    const root = document.documentElement;
+    const intro = document.getElementById('intro');
+    if(!intro || !root.classList.contains('intro-open')) return;
+    const page = [document.querySelector('.skip'), document.querySelector('header'), document.querySelector('main'), document.querySelector('footer')].filter(Boolean);
+    const stepAsk = intro.querySelector('[data-step="ask"]');
+    const stepCoin = intro.querySelector('[data-step="coin"]');
+    const result = intro.querySelector('.coin-result');
+    const actions = intro.querySelector('.coin-actions');
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    page.forEach(el => el.setAttribute('inert',''));
+    intro.focus({preventScroll:true});
+
+    function close(){
+      try{ localStorage.setItem('jussi-intro','done'); }catch(e){}
+      if(location.hash.indexOf('#intro') === 0) history.replaceState(null, '', location.pathname + location.search);
+      const done = () => {
+        root.classList.remove('intro-open');
+        intro.remove();
+        page.forEach(el => el.removeAttribute('inert'));
+        window.scrollTo(0,0);
+        document.getElementById('main').focus({preventScroll:true});
+      };
+      if(reduce){ done(); return; }
+      intro.classList.add('leaving');
+      setTimeout(done, 500);
+    }
+    function land(){
+      stepCoin.classList.remove('is-tossing');
+      stepCoin.classList.add('is-landed');
+      result.textContent = 'Die Münze sagt: Ja.';
+      actions.hidden = false;
+      actions.querySelector('[data-intro="enter"]').focus();
+    }
+    function toss(){
+      actions.hidden = true;
+      result.textContent = '';
+      stepCoin.classList.remove('is-landed','is-tossing');
+      if(reduce){ land(); return; }
+      void stepCoin.offsetWidth;            // Animation neu starten
+      stepCoin.classList.add('is-tossing');
+    }
+    stepCoin.querySelector('.coin').addEventListener('animationend', land);
+
+    // Tarot: egal welche Karte, es ist immer „Der engagierte Arbeitnehmer“
+    const stepTarot = intro.querySelector('[data-step="tarot"]');
+    const cards = [...stepTarot.querySelectorAll('.tarot-card')];
+    const hint = stepTarot.querySelector('.tarot-hint');
+    const reading = stepTarot.querySelector('.tarot-text');
+    const tarotActions = stepTarot.querySelector('.tarot-actions');
+    const READING = 'Die Karte deutet nicht in die Zukunft – sie deutet auf einen Menschen. Wer ihr begegnet, sucht nicht länger, er hat gefunden. Zögere nicht: Was du ihm heute anvertraust, trägt er weiter, als du es erwartest. Die Antwort lag schon vor dir, bevor du gefragt hast.';
+    function draw(card){
+      if(stepTarot.classList.contains('is-drawn')) return;
+      stepTarot.classList.add('is-drawn');
+      hint.textContent = 'Deine Karte:';
+      const before = card.getBoundingClientRect();
+      cards.forEach(c => { c.disabled = true; if(c !== card) c.classList.add('is-gone'); });
+      card.classList.add('is-chosen');
+      const finish = () => {
+        cards.forEach(c => { if(c !== card) c.hidden = true; });
+        if(!reduce){
+          const after = card.getBoundingClientRect();
+          card.style.transition = 'none';
+          card.style.transform = 'translateX(' + (before.left - after.left) + 'px)';
+          void card.offsetWidth;
+          card.style.transition = '';
+          card.style.transform = '';
+        }
+        card.classList.add('is-flipped');
+        setTimeout(() => {
+          reading.textContent = READING;
+          tarotActions.hidden = false;
+          tarotActions.querySelector('[data-intro="enter"]').focus();
+        }, reduce ? 0 : 950);
+      };
+      setTimeout(finish, reduce ? 0 : 320);
+    }
+    function resetTarot(){
+      stepTarot.classList.remove('is-drawn');
+      hint.textContent = 'Zieh eine Karte.';
+      reading.textContent = '';
+      tarotActions.hidden = true;
+      cards.forEach(c => { c.hidden = false; c.disabled = false; c.style.transform = ''; c.classList.remove('is-gone','is-chosen','is-flipped'); });
+      cards[1].focus();
+    }
+    cards.forEach(c => c.addEventListener('click', () => draw(c)));
+
+    // „Ja“ weicht aus: Maus 5×, Touch 3×, danach lässt er sich fangen. Tastatur: nie.
+    const yes = intro.querySelector('[data-intro="yes"]');
+    const MAX = { mouse:5, pen:5, touch:3 };
+    let dodges = 0, lastType = 'mouse';
+    function dodge(px, py){
+      const r = yes.getBoundingClientRect();
+      if(!yes.classList.contains('is-dodging')){
+        const slot = document.createElement('span');
+        slot.className = 'intro-btn-slot';
+        slot.style.width = r.width + 'px'; slot.style.height = r.height + 'px';
+        yes.before(slot);
+        yes.style.left = r.left + 'px'; yes.style.top = r.top + 'px';
+        yes.classList.add('is-dodging');
+        void yes.offsetWidth;
+      }
+      const m = 16, W = innerWidth - r.width - m, H = innerHeight - r.height - m;
+      let x, y, tries = 0;
+      do{
+        x = m + Math.random() * Math.max(0, W - m);
+        y = m + Math.random() * Math.max(0, H - m);
+        tries++;
+      } while(tries < 20 && Math.hypot(x + r.width/2 - px, y + r.height/2 - py) < 220);
+      yes.style.left = x + 'px'; yes.style.top = y + 'px';
+      dodges++;
+    }
+    yes.addEventListener('pointerdown', e => { lastType = e.pointerType || 'mouse'; });
+    yes.addEventListener('pointerenter', e => {
+      const t = e.pointerType || 'mouse';
+      if(t !== 'touch' && dodges < MAX[t]) dodge(e.clientX, e.clientY);
+    });
+
+    intro.addEventListener('click', e => {
+      const b = e.target.closest('[data-intro]');
+      if(!b) return;
+      const a = b.dataset.intro;
+      if(a === 'yes' && e.detail > 0 && lastType === 'touch' && dodges < MAX.touch){
+        const r = yes.getBoundingClientRect(); dodge(r.left + r.width/2, r.top + r.height/2); return;
+      }
+      if(a === 'yes' || a === 'enter') close();
+      else if(a === 'no'){
+        stepAsk.hidden = true;
+        const force = location.hash === '#intro-muenze' ? 'coin' : location.hash === '#intro-tarot' ? 'tarot' : null;
+        if(force ? force === 'coin' : Math.random() < 0.5){   // per Zufall: Münze oder Tarot (Test: #intro-muenze / #intro-tarot)
+          stepCoin.hidden = false;
+          intro.setAttribute('aria-labelledby','intro-q2');
+          document.getElementById('intro-q2').focus();
+          setTimeout(toss, reduce ? 0 : 450);
+        } else {
+          stepTarot.hidden = false;
+          intro.setAttribute('aria-labelledby','intro-q3');
+          document.getElementById('intro-q3').focus();
+        }
+      }
+      else if(a === 'again') toss();
+      else if(a === 'redraw') resetTarot();
+    });
+  })();
+
+  // animated ASCII horse player
+  (function(){
+    const root = document.documentElement;
+    const el = document.getElementById('horse');
+    const slot = el && el.closest('.ascii-slot');
+    const frames = Array.isArray(window.HORSE_FRAMES) ? window.HORSE_FRAMES.filter(f => typeof f === 'string' && f.length) : [];
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+    if(!el || !frames.length){ if(slot) slot.classList.add('is-empty'); }
+    else{
+      const rows = Math.max(...frames.map(f=>f.split('\n').length));
+      const cols = Math.max(...frames.map(f=>Math.max(...f.split('\n').map(l=>l.length))));
+      for(let k=0;k<frames.length;k++){
+        const ls = frames[k].split('\n');
+        while(ls.length<rows) ls.push('');
+        frames[k] = ls.map(l=>l.padEnd(cols,' ')).join('\n');
+      }
+      el.textContent = frames[0];
+    }
+
+    let i = 0, timer = null, visible = true;
+    const allowed = () => frames.length && !reduce.matches && visible && !document.hidden;
+    function sync(){
+      if(allowed() && !timer){ timer = setInterval(()=>{ i = (i+1) % frames.length; el.textContent = frames[i]; }, 90); }
+      else if(!allowed() && timer){ clearInterval(timer); timer = null; }
+    }
+    if(slot && 'IntersectionObserver' in window){
+      new IntersectionObserver(es => { visible = es[0].isIntersecting; sync(); }).observe(slot);
+    }
+    document.addEventListener('visibilitychange', sync);
+    if(reduce.addEventListener) reduce.addEventListener('change', sync);
+
+    sync();
+  })();
+</script>
+
+</body>
+</html>
